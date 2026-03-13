@@ -1,0 +1,21 @@
+{
+    "name": "jephy/mvc",
+    "require": {
+        "smarty/smarty": "^4.0",
+        "phpmailer/phpmailer": "^6.8",
+        "nesbot/carbon": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "jephy-mvc/app",
+            "App\\Controllers\\": "jephy-mvc/app/controllers",
+            "App\\Entities\\": "jephy-mvc/app/entities",
+            "App\\Classes\\": "jephy-mvc/app/classes",
+            "App\\Hooks\\": "jephy-mvc/app/hooks",
+            "App\\Traits\\": "jephy-mvc/app/traits",
+            "App\\Image\\": "jephy-mvc/app/image",
+            "App\\Models\\": "jephy-mvc/app/models",
+            "App\\Core\\": "jephy-mvc/core"
+        }
+    }
+}
