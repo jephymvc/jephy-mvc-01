@@ -1,0 +1,3 @@
+imagery/
+version-*/.env
+version-*/src/jephy-mvc/config.conf
