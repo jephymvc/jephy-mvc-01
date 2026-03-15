@@ -15,8 +15,22 @@ class HomeController extends Controller
         ];
   
         // Let hooks modify the data
-        $data = $this->hooks->exec( 'homepageData', $data );        
+        #	$data = $this->hooks->exec( 'homepageData', $data );        
         echo $this->render( 'home/index.tpl', $data);
+		
+    }
+   
+	public function documentation( $target = "" )
+    {
+
+        $data = [
+            'title' 	=> 'Welcome to Jephy MVC',
+            'message' 	=> 'Hello from Jephy MVC!'
+        ];
+  
+        // Let hooks modify the data
+        #	$data = $this->hooks->exec( 'homepageData', $data );        
+        echo $this->render( 'home/documentation.tpl', $data);
 		
     }
 

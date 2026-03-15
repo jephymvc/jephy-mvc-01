@@ -3,16 +3,18 @@ namespace App\Core;
 
 class HookManager
 {
-    private $hooks = [];
-    private $disabledHooks = [];
+    
+	private $hooks 			= [];
+    private $disabledHooks 	= [];
     
     /**
      * Register a hook
      */
-    public function registerHook($hookName, $callback, $priority = 10)
+    public function registerHook( $hookName, $callback, $priority = 10 )
     {
-        if (!is_callable($callback)) {
-            throw new \InvalidArgumentException("Hook callback must be callable for hook: {$hookName}");
+        
+		if ( !is_callable( $callback ) ) {
+            throw new \InvalidArgumentException( "Hook callback must be callable for hook: {$hookName}" );
         }
         
         if (!isset($this->hooks[$hookName])) {
@@ -28,20 +30,22 @@ class HookManager
         usort($this->hooks[$hookName], function($a, $b) {
             return $a['priority'] - $b['priority'];
         });
+		
     }
     
     /**
      * Execute hooks - pass arguments as array
      */
-    public function exec($hookName, $params = [])
+    public function exec( $hookName, $params = [] )
     {
-        if (in_array($hookName, $this->disabledHooks) || !isset($this->hooks[$hookName])) {
+        
+		if ( in_array( $hookName, $this->disabledHooks ) || !isset( $this->hooks[$hookName] ) ) {
             return $params;
         }
         
         $modifiedParams = $params;
         
-        foreach ($this->hooks[$hookName] as $hook) {
+        foreach ( $this->hooks[$hookName] as $hook ) {
             // Always pass $params as a single array argument
             $result = call_user_func($hook['callback'], $modifiedParams);
             
@@ -56,6 +60,7 @@ class HookManager
         }
         
         return $modifiedParams;
+		
     }
     
     /**

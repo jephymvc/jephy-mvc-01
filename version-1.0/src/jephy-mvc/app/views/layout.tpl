@@ -65,6 +65,45 @@ ul.custom-list-image > li::before {
 	background-size: contain;
 	background-repeat: no-repeat;
 }
+
+.border-radius-1{
+	border-radius: 7px;
+}
+
+.border-radius-2{
+	border-radius: 14px;
+}
+
+.border-radius-3{
+	border-radius: 21px;
+}
+
+.home-slide-cta-btns{
+	display: flex;
+	justify-content: flex-start;
+	gap: 21px;
+	margin-top: 49px;
+}
+
+.home-slide-cta-btns > a{
+	display: block;
+	background-color: #fff;
+	padding: 10px 21px;
+	text-decoration: none;
+	border-radius: 28px;
+	font-weight: bold;
+	color: #444;
+}
+
+.home-slide-cta-btns > a.blue-bg{
+	background-color: #007bff !important;
+	color: #ffffff !important;
+}
+
+.bold-900{
+	font-weight: 900;
+}
+
 </style>
 
 {block name="styles"}
@@ -75,38 +114,52 @@ ul.custom-list-image > li::before {
 
 
 {block name="header"}
-	{include file="partials/header.tpl"}
+	{*include file="partials/header.tpl"*}
 {/block}
 
 {block name="home"}
 <section id="home-slide">
 	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-9">
-				<div style="display: flex; align-items: center; flex-direction: column; width: 100%; height: 490px; ">
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<div style="display: flex; align-items: flex-end; flex-direction: column; width: 100%; height: 490px; ">
 					<div style="border: 0px solid #f00; margin: auto 0px;">					
 						
 						<div>
 						
+							<h1 class="home-slide-main-heading bold-900">
+								Jephy-MVC
+							</h1>
+							
 							<div class="home-slide-badges">
 								<span class="home-slide-top-badge">
 									<span class="badge-bull"></span>
-									Accepting New Patients
+									Light Weight and Platform Agnostic
 								</span>
 							</div>
 							
 							<h1 class="home-slide-main-heading">
-								Faith-based Wellness & Counselling
+								Build PHP Apps <br />Faster & Cleaner
 							</h1>
 							
 							<h3 class="home-slide-sub-heading">
-								Restore your mind, body and spirit. Nurture your path to healing and wholeness.
+								The modern PHP framework that provides elegant syntax, 
+								robust tools, and a delightful developer experience.
+								
+								Get started in minutes.
 							</h3>
 							
 						</div>
 						
-						<div class="home-slide-ctas">
-							<a href="/book-consultation">Book a Consultation</a>
+						<div class="home-slide-cta-btns">
+							<a class="blue-bg" target="_blank" href="{$site.url.third_party_platform.github}">
+								<img src="/assets/icons/download-white.svg" style="width: 21px;" />
+								Download ZIP
+							</a>
+							<a href="/documentation">
+								Read Documentation
+								<img src="/assets/icons/arrow-right.svg" style="width: 21px;" />
+							</a>							
 						</div>
 						
 					</div>
@@ -114,23 +167,33 @@ ul.custom-list-image > li::before {
 				
 			</div>
 			
+			<div class="col-md-6">
+				<div class="py-5">
+					<img src="/assets/images/code-sample.jpg" class="w-100 border-radius-3" />
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </section>
+
 {/block}
 
 {block name="services"}
 <section id="services" class="py-5">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-7">
+			<div class="col-md-9">
 			
 				<div class="sectional-headings centered py-5">
-					<h6 class="sectional-title-tag">OUR SERVICES</h6>
-					<h3>Restoring Alignment</h3>
+					{*<h6 class="sectional-title-tag">OUR SERVICES</h6>*}
+					<h3>
+						Everything you need to build robust applications
+					</h3>
 					<p>
-						We provide specialized care tailored to your unique season of life. 
-						Explore how we can help you find balance and healing.
+						From simple monolith and RESTful APIs to complex enterprise and 
+						distributed/containerized applications, we provide the tools 
+						you need to succeed.
 					</p>
 				</div>
 				
@@ -138,14 +201,14 @@ ul.custom-list-image > li::before {
 		</div>
 		<div class="row">
 		
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service-column white">
 					
 					<div class="mb-3">
 						<div class="services-icon">
-							<img src="/assets/images/icons/user.svg" />
+							<img src="/assets/icons/lightning.svg" />
 						</div>
-						<h2>Individual Therapy</h2>
+						<h2>Lightning Fast</h2>
 						<h6>SPACE TO REFLECT. ROOM TO GROW.</h6>
 					</div>
 
@@ -154,34 +217,29 @@ ul.custom-list-image > li::before {
 						A confidential environment to explore anxiety, depression, trauma, and its transitions.
 						Work towards emotional regulation and lasting transformation.
 					</p>
-					
-					<ul class="custom-list-image">
-						<li>Tools for emotional resillence</li>
-						<li>Granular self-assurance</li>
-						<li>Renewed sense of purpose</li>
-					</ul>
-					
+				
+					{*
 					<div class="cta-btn-wrapper">
 						<div>
-							<a href="/therapies/individual-therapy">
+							<a href="">
 								Learn More
 							</a>
 						</div>						
 					</div>
-					
+					*}
 					
 					
 				</div>
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service-column dark-blue">
 				
 					<div class="mb-3">
 						<div class="services-icon">
-							<img src="/assets/images/icons/users.svg" />
+							<img src="/assets/icons/security-white.svg" />
 						</div>
-						<h2>Couples Conselling</h2>
+						<h2>Secured by Default</h2>
 						<h6>STRENGTHENING CONNECTION.</h6>
 					</div>
 					
@@ -191,33 +249,27 @@ ul.custom-list-image > li::before {
 						Improving communication, resulving conflict, and deepening 
 						emotional and spiritual initimacy.
 					</p>
-					
-					<ul class="custom-list-image">
-						<li>Navigate conflict with clarity</li>
-						<li>Rebuild connection after hurt</li>
-						<li>Develop shared vision</li>
-					</ul>
-					
+					{*
 					<div class="cta-btn-wrapper dark-blue">
 						<div>
-							<a href="/therapies/couples-therapy">
+							<a href="">
 								Learn More
 							</a>
 						</div>						
 					</div>
-					
+					*}
 					
 				</div>
 			</div>
 						
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service-column white">				
 					
 					<div class="mb-3">
 						<div class="services-icon">
-							<img src="/assets/images/icons/family.svg" />
+							<img src="/assets/icons/database.svg" />
 						</div>
-						<h2>Family Therapy</h2>
+						<h2>Elegant ORM</h2>
 						<h6>HEALING WITHIN HOME.</h6>
 					</div>
 					
@@ -226,268 +278,49 @@ ul.custom-list-image > li::before {
 						communication breakdowns, and generation patterns.
 					</p>
 					
-					<ul class="custom-list-image">
-						<li>Healthier communication</li>
-						<li>Parenting support and guidance</li>
-						<li>Restoration of trust</li>
-					</ul>
-					
+					{*
 					<div class="cta-btn-wrapper">
 						<div>
-							<a href="/therapies/family-therapy">
+							<a href="">
 								Learn More
 							</a>
 						</div>						
 					</div>
+					*}
+				</div>
+			</div>
+									
+			<div class="col-md-3">
+				<div class="service-column white">				
 					
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-</section>
-{/block}
-
-{block name="about"}
-<section id="about">
-	<div class="container">
-		<div class="row align-items-center">
-			
-			<div class="col-md-6 mb-5">
-				<img src="/assets/images/img1.jpg" class="w-100 border-radius-14" />
-			</div>
-			
-			<div class="col-md-6">
-				<div>
-					<h1>
-						About <br>TRCWellness.
-					</h1>
-					<h6 class="sectional-title-tag">
-						Healing begins with alignment.
-					</h6>
-					<div class="py-3"></div>
-					<p>
-						TRCWellness is a faith-based, science-supported therapeutic clinic 
-						serving individuals, couples, and families seeking wholeness. 
-						We integrate clinical excellence with spiritual insight to support 
-						healing of the mind, heart, and relationships.
-					</p>
-					<p>
-						Our work is grounded in the belief that lasting transformation happens 
-						when spirit, soul, and body are brought back into healthy alignment. 
-						Through thoughtful care, evidence-based practices, and compassionate 
-						presence, we walk with our clients toward clarity, restoration, and 
-						renewed strength.
-					</p>
-					<p>
-						We are committed to creating a space that feels safe, dignified, and 
-						deeply human — where questions are welcome, growth is intentional, and 
-						healing is holistic.
-					</p>
-					
-				</div>
-			</div>
-			
-		</div>
-
-		
-		
-	</div>
-</section>
-{/block}
-
-{block name="team"}
-
-<section id="team">
-
-	<div class="container">
-		<div class="row justify-content-left">
-			<div class="col-md-12">
-			
-				<div class="sectional-headings py-5">
-					<h6 class="sectional-title-tag">OUR TEAM</h6>
-					<h3>Meet the Therapists</h3>
-					<p>
-						Grounded. Compassionate. Clinically Compasionate. Each session is tailored to
-						you by licensed professionals.
-					</p>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	
-	<div class="container">
-		<div class="row">
-		
-			<div class="col-md-6 mb-4">
-				<div class="team-card">
-					<div class="sherilynn-asuoha"></div>
-					<div>
-						<h2>
-							Sherilynn Asuoha
-						</h2>
-						<div class="team-title">
-						
-							<h6>
-								EdD,
-								LCPC
-							</h6>
-							<span></span>
-							<h6>
-								Therapist
-							</h6>
-							
+					<div class="mb-3">
+						<div class="services-icon">
+							<img src="/assets/icons/cloud.svg" />
 						</div>
-						
+						<h2>Platform Agnostic</h2>
+						<h6>HEALING WITHIN HOME.</h6>
+					</div>
+					
+					<p>
+						A structured setting to address conflict, parenting challenges, 
+						communication breakdowns, and generation patterns.
+					</p>					
+					
+					{*
+					<div class="cta-btn-wrapper">
 						<div>
-							<p>							
-								Licensed Clinical Professional Counsellor with extensive 
-								experience serving individuals across diverse backgrounds 
-								and life ...					
-							</p>
-						</div>
-						
-						<div class="team-tags">
-							<small>Trauma</small>
-							<small>Anxiety</small>
-							<small>Family</small>
-						</div>
-						
-						<div class="team-cta">
-							<a class="more-link" href="/team/sherilynn-asuoha">
-								View Profile 
-								<img src="/assets/images/icons/arrow-right.svg" style="width: 21px;" />
+							<a href="">
+								Learn More
 							</a>
-						</div>
-						
+						</div>						
 					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-6 mb-4">
-				<div class="team-card">
-					<div class="pavielle-randolph"></div>
-					<div>
-						<h2>
-							Pavielle Randolph
-						</h2>
-						<div class="team-title">
-						
-							<h6>
-								MSW, LSW
-							</h6>
-							<span></span>
-							<h6>
-								Therapist
-							</h6>
-							
-						</div>
-						
-						<div>
-							<p>								
-								Licensed Social Worker and trauma‑informed therapist who 
-								provides youth centered clinical care focused on ...							
-							</p>
-						</div>
-						
-						
-						<div class="team-tags">
-							<small>Youth</small>
-							<small>Emotional Wellness</small>
-							<small>Coping Skills</small>
-						</div>
-						
-						<div class="team-cta">
-							<a class="more-link" href="/team/pavielle-randolph">
-								View Profile 
-								<img src="/assets/images/icons/arrow-right.svg" style="width: 21px;" />
-							</a>
-						</div>
-						
-					</div>
+					*}
+					
 				</div>
 			</div>
 			
 			
 		</div>
-	</div>
-</section>
-{/block}
-
-{block name="features"}
-<section id="features">
-	<div class="container">
-		<div class="row align-items-center">
-			
-			<div class="col-md-6 mb-5">
-				<img src="/assets/images/img2.jpg" class="w-100 border-radius-14" />
-			</div>
-			
-			<div class="col-md-6">
-				<div>
-					<h1>
-						Faith-Based. <br>Clinically Grounded.
-					</h1>
-					
-					<p>
-						TRCWellness integrates spiritual insight with 
-						evidence-based therapeutic practices. We horo 
-						each client faith journey while maintaining the 
-						heighest standards of clinical care.
-					</p>
-					
-					<div class="p-3"></div>
-					<div class="feature-row">
-						<div class="icon">
-							<img src="/assets/images/icons/brain.svg" />
-						</div>
-						<div>
-							<h5>Science-Supported</h5>
-							<p>
-								Evidence based practices grounded in clinical excellence and ethical standards
-							</p>
-						</div>
-					</div>
-					
-					
-					<div class="feature-row">
-						<div class="icon">
-							<img src="/assets/images/icons/praying-hands.svg" />
-						</div>
-						<div>
-							<h5>Faith-Integrated</h5>
-							<p>
-								Participation in spiritual components is always guided by consent 
-								and appropriateness.
-							</p>
-						</div>
-					</div>
-					
-					
-					<div class="feature-row">
-						<div class="icon">
-							<img src="/assets/images/icons/diamond.svg" />
-						</div>
-						<div>
-							<h5>Whole-Person Care</h5>
-							<p>
-								Restoring alignment within the mind, body, and spirit for lasting
-								transformation
-							</p>
-						</div>
-					</div>
-					
-					
-					
-				</div>
-			</div>
-			
-		</div>
-
-		
-		
 	</div>
 </section>
 {/block}
@@ -496,7 +329,7 @@ ul.custom-list-image > li::before {
 <section class="main-cta">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-9">
+			<div class="col-md-12">
 				<div style="">
 					<div style="border: 0px solid #f00; margin: auto 0px;">					
 						
@@ -505,22 +338,31 @@ ul.custom-list-image > li::before {
 							<div class="home-slide-badges">
 								<span class="home-slide-top-badge">
 									<span class="badge-bull"></span>
-									Healing begins with one step.
+									Big dream begins with one step.
 								</span>
 							</div>
 							
 							<h2 class="home-slide-main-heading">
-								Begin Your Journey
+								Ready to start building?
 							</h2>
 							
 							<h3 class="home-slide-sub-heading">
-								Schedule a consultation to learn how we can support you.
+								Download the latest release package. It includes 
+								everything you need to get your project up and running quickly.
 							</h3>
 							
 						</div>
 						
-						<div class="home-slide-ctas">
-							<a href="/book-consultation">Book a Consultation</a>
+						
+						<div class="home-slide-cta-btns">
+							<a class="blue-bg" target="_blank" href="{$site.url.third_party_platform.github}">
+								<img src="/assets/icons/download-white.svg" style="width: 21px;" />
+								Download ZIP
+							</a>
+							<a href="/documentation">
+								Read Documentation
+								<img src="/assets/icons/arrow-right.svg" style="width: 21px;" />
+							</a>							
 						</div>
 						
 					</div>
@@ -535,102 +377,9 @@ ul.custom-list-image > li::before {
 
 {block name="footer"}
 <section id="footer">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-7">
-				<div class="footer-form-content">
-					<h1>
-						<span class="white-color">Healing begins with </span><br>
-						<span class="pale-color italic">one step</span>
-					</h1>
-					
-					<div class="my-5">
-						<p class="white-texts">
-							Schedule a consultation to learn how we can support you.
-							We are committed to create a space that feels safe, dignified,
-							and deeply human.							
-						</p>
-					</div>
-					
-					<div class="footer-form-ctas">
-						<div>
-							<a class="book-consultation">Book Free Consultation</a>
-						</div>
-						<div>
-							<a class="verify-issuance">Verify Insurance</a>
-						</div>					
-					</div>
-					
-					<div class="footer-form-contact-info">
-						<div>
-							<small>EMAIL US</small><br>
-							<a href="mailto:{$site.email}">{$site.email}</a>
-						</div>
-						<div>
-							<small>CALL US</small><br>
-							<a href="tel:{$site.phone}">{$site.phone}</a>
-						</div>					
-					</div>
-					
-				</div>
-			</div>
-			<div class="col-md-5 col-sm-12">
-				<div class="footer-contact-form">
-					<h4>
-						Send us a message
-					</h4>
-					<hr />
-					<form>
-						
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<small>FIRST NAME</small>
-									<input type="text" name="firstname" class="form-control" placeholder="Enter First Name" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<small>LAST NAME</small>
-									<input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" />
-								</div>
-							</div>							
-						</div>
-						
-						<div class="form-group">
-							<small>EMAIL</small>
-							<input type="email" name="email" class="form-control" placeholder="Enter Email Address" />
-						</div>
-						
-						<div class="form-group">
-							<small>SERVICE INTEREST</small>
-							<select class="form-control" name="service-type">
-								<option value="">Select one</option>
-								<option value="Individual Therapy">Individual Therapy</option>
-								<option value="Couples Therapy">Couples Therapy</option>
-								<option value="Family Therapy">Family Therapy</option>
-							</select>
-						</div>
-						
-						
-						<div class="form-group">
-							<small>MESSAGE</small>
-							<textarea class="form-control" rows="5" name="message" placeholder="Compose your message ..."></textarea>
-						</div>
-						
-						<div class="form-group">
-							<button class="btn footer-contact-form-btn">Send Message</button>
-						</div>
-						
-						
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer class="pt-5">
-		<div class="container grey-border-top">
+	
+	<footer class="pt-2">
+		<div class="container">
 			<div class="pt-4"></div>
 			<div class="row">
 				<div class="col-md-4 col-sm-12 mb-5">
@@ -641,31 +390,32 @@ ul.custom-list-image > li::before {
 							</a>
 						</div>
 						<p class="grey-texts">
-							Reforming alignment within the mind, body, and spirit through faith-based,
-							science support therapy.
+							The framework for web Artisans. Build faster, better, and more elegant applications.
 						</p>
 					</div>
 				</div>
 				
 				<div class="col-md-3 col-sm-12 mb-5">
 					<div>
-						<h6 class="white-texts">Services</h6>
+						<h6 class="white-texts">Documentation</h6>
 						<ul class="footer-list">
-							<li><a href="/therapies/individual-therapy">Individual Therapy</a></li>
-							<li><a href="/therapies/couples-therapy">Couples Therapy</a></li>
-							<li><a href="/therapies/family-therapy">Family Therapy</a></li>							
-							
+							<li><a href="/documentation/getting-started">Getting Started</a></li>
+							<li><a href="/documentation/routing">Routing</a></li>
+							<li><a href="/documentation/controllers">Controllers</a></li>							
+							<li><a href="/documentation/database">Database</a></li>							
+							<li><a href="/documentation/stitching">Templating/Stitching</a></li>							
 						</ul>
 					</div>
 				</div>
 				
 				<div class="col-md-2 col-sm-12 mb-5">
 					<div>
-						<h6 class="white-texts">Company</h6>
+						<h6 class="white-texts">Resources</h6>
 						<ul class="footer-list">
-							<li><a class="" href="/about-us">About Us</a></li>
-							<li><a class="ease-scroll" data-target="team" href="/">Our Team</a></li>						
-							<li><a class="ease-scroll" data-target="footer" href="/">Contact</a></li>
+							<li><a class="" href="/about-us">Tutorial</a></li>
+							<li><a class="ease-scroll" data-target="team" href="/">Blog</a></li>						
+							<li><a class="ease-scroll" data-target="footer" href="/">Packages</a></li>
+							<li><a class="ease-scroll" data-target="footer" href="/">API Reference</a></li>
 						</ul>
 					</div>
 				</div>

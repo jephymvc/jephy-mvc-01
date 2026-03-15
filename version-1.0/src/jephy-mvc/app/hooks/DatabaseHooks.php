@@ -1,15 +1,14 @@
 <?php
 namespace App\Hooks;
-use App\Core\Framework;
-use App\Core\HookManager;
+use App\Core\{ Framework, Config, HookManager };
 class DatabaseHooks
 {
-    public function registerHooks(HookManager $hooks)
+    public function registerHooks( HookManager $hooks )
     {
-        $hooks->registerHook('beforeUserRegister', [$this, 'validateUserRegistration']);
-        $hooks->registerHook('afterUserRegister', [$this, 'sendAdminNotification']);
-        $hooks->registerHook('beforeSave', [$this, 'sanitizeData']);
-        $hooks->registerHook('beforeInsert', [$this, 'logInsert']);
+        $hooks->registerHook( 'beforeUserRegister', [$this, 'validateUserRegistration'] );
+        $hooks->registerHook( 'afterUserRegister', [$this, 'sendAdminNotification'] );
+        $hooks->registerHook( 'beforeSave', [$this, 'sanitizeData'] );
+        $hooks->registerHook( 'beforeInsert', [$this, 'logInsert'] );
     }
     
     public function validateUserRegistration($params)
@@ -32,10 +31,9 @@ class DatabaseHooks
     
     public function sendAdminNotification($params)
     {
-        $mailer = Framework::getMailer();
-        $emailBody = "New user registered: {$params['user']->username} ({$params['user']->email})";
-        
-        $mailer->send('admin@site.com', 'New User Registration', $emailBody);
+        $mailer 	= Framework::getMailer();
+        $emailBody 	= "New user registered: {$params['user']->username} ({$params['user']->email})";       
+        $mailer->send( Config::getInstance()->get( 'mail.address.from' ), 'New User Registration', $emailBody);
         
         return $params;
     }
@@ -57,7 +55,10 @@ class DatabaseHooks
     public function logInsert($params)
     {
         // Log the insert operation
-        error_log("Inserting into {$params['entity']->table}: " . json_encode($params['attributes']));
+		if( Config::getInstance()->get( 'site.app_debug' ) ){
+			error_log("Inserting into {$params['entity']->table}: " . json_encode($params['attributes']));        
+		}
         return $params;
     }
+	
 }

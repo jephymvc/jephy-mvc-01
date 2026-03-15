@@ -1,7 +1,6 @@
 <?php
 namespace App\Hooks;
-use App\Core\Framework;
-use App\Core\HookManager;
+use App\Core\{ Framework, Config, HookManager };
 class LoggingHooks
 {
     public function registerHooks($hooks)
@@ -12,7 +11,9 @@ class LoggingHooks
     
     public function logComment($params)
     {
-        error_log("User {$params['user_id']} commented on post {$params['post_id']}");
+       	if( Config::getInstance()->get( 'site.app_debug' ) ){
+			error_log("User {$params['user_id']} commented on post {$params['post_id']}");       
+		}	  
         return $params; // Don't modify, just log
     }
     

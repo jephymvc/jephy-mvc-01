@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.5.6, created on 2026-03-09 15:55:31
+/* Smarty version 4.5.6, created on 2026-03-15 13:41:14
   from 'C:\xampp\htdocs\jephy\version-1.0\src\jephy-mvc\app\views\partials\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.5.6',
-  'unifunc' => 'content_69aedf63e787c9_36077267',
+  'unifunc' => 'content_69b6a8eaa9c8c0_93832332',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96151c3220e97713239635d2a32c9dfa7734d154' => 
     array (
       0 => 'C:\\xampp\\htdocs\\jephy\\version-1.0\\src\\jephy-mvc\\app\\views\\partials\\header.tpl',
-      1 => 1772320978,
+      1 => 1773577783,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_69aedf63e787c9_36077267 (Smarty_Internal_Template $_smarty_tpl) {
+function content_69b6a8eaa9c8c0_93832332 (Smarty_Internal_Template $_smarty_tpl) {
 ?><header>
 	<div class="container">
 		<nav class="nav-bar">
@@ -37,22 +37,10 @@ function content_69aedf63e787c9_36077267 (Smarty_Internal_Template $_smarty_tpl)
 			</div>
 			<div class="nav-bar-center-menu">
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/about-us">About</a></li>
-					<!--
-						<li class="dropdown">
-							<a>Therapy</a>
-							<ul>
-								<li><a href="">Personal Therapy</a></li>
-								<li><a href="">Couple Therapy</a></li>
-								<li><a href="">Family Therapy</a></li>						
-							</ul>
-						</li>
-						<li><a href="/">FAQ</a></li> 
-					-->
-					<li><a href="/therapies">Therapies</a></li>
-					<li><a href="/" class="ease-scroll" data-target="team">Team</a></li>
-					<li><a href="/" class="ease-scroll" data-target="footer">Contact</a></li>
+					<li><a href="/getting-started">Getting Started</a></li>
+					<li><a href="/api-references">API Reference</a></li>					
+					<li><a href="/components">Components</a></li>
+					<li><a href="/blog">Blog</a></li>
 					
 				</ul>
 			</div>
@@ -60,8 +48,10 @@ function content_69aedf63e787c9_36077267 (Smarty_Internal_Template $_smarty_tpl)
 			<div class="cta-column">
 				<ul>
 					<li>
-						<a class="nav-bar-book-appointment-cta" href="/book-consultation">
-							Book Consultation
+						<a class="nav-bar-book-appointment-cta" target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['site']->value['url']['third_party_platform']['github'];?>
+">
+							<img src="/assets/icons/download-white.svg" style="width: 21px;" />
+							Download ZIP
 						</a>
 					</li>
 				</ul>

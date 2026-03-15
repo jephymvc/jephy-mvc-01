@@ -14,22 +14,10 @@
 			</div>
 			<div class="nav-bar-center-menu">
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/about-us">About</a></li>
-					<!--
-						<li class="dropdown">
-							<a>Therapy</a>
-							<ul>
-								<li><a href="">Personal Therapy</a></li>
-								<li><a href="">Couple Therapy</a></li>
-								<li><a href="">Family Therapy</a></li>						
-							</ul>
-						</li>
-						<li><a href="/">FAQ</a></li> 
-					-->
-					<li><a href="/therapies">Therapies</a></li>
-					<li><a href="/" class="ease-scroll" data-target="team">Team</a></li>
-					<li><a href="/" class="ease-scroll" data-target="footer">Contact</a></li>
+					<li><a href="/getting-started">Getting Started</a></li>
+					<li><a href="/api-references">API Reference</a></li>					
+					<li><a href="/components">Components</a></li>
+					<li><a href="/blog">Blog</a></li>
 					
 				</ul>
 			</div>
@@ -37,8 +25,9 @@
 			<div class="cta-column">
 				<ul>
 					<li>
-						<a class="nav-bar-book-appointment-cta" href="/book-consultation">
-							Book Consultation
+						<a class="nav-bar-book-appointment-cta" target="_blank" href="{$site.url.third_party_platform.github}">
+							<img src="/assets/icons/download-white.svg" style="width: 21px;" />
+							Download ZIP
 						</a>
 					</li>
 				</ul>

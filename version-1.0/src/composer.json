@@ -16,6 +16,9 @@
             "App\\Image\\": "jephy-mvc/app/image",
             "App\\Models\\": "jephy-mvc/app/models",
             "App\\Core\\": "jephy-mvc/core"
-        }
+        },
+        "files": [
+            "jephy-mvc/core/Helper.php"
+        ]
     }
 }
