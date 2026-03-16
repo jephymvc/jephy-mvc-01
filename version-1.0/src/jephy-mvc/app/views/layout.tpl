@@ -96,7 +96,7 @@ ul.custom-list-image > li::before {
 }
 
 .home-slide-cta-btns > a.blue-bg{
-	background-color: #007bff !important;
+	background-color: #000000 !important;
 	color: #ffffff !important;
 }
 
@@ -127,14 +127,18 @@ ul.custom-list-image > li::before {
 						
 						<div>
 						
-							<h1 class="home-slide-main-heading bold-900">
-								Jephy-MVC
-							</h1>
+							
+							<a href="/home">
+								<img src="/assets/images/logo-white.svg" class="nav-bar-logo" />
+							</a>
+							
+							<br />
+							<br />
 							
 							<div class="home-slide-badges">
 								<span class="home-slide-top-badge">
 									<span class="badge-bull"></span>
-									Light Weight and Platform Agnostic
+									Light Weight and Host Platform Agnostic
 								</span>
 							</div>
 							
@@ -209,13 +213,14 @@ ul.custom-list-image > li::before {
 							<img src="/assets/icons/lightning.svg" />
 						</div>
 						<h2>Lightning Fast</h2>
-						<h6>SPACE TO REFLECT. ROOM TO GROW.</h6>
+						<h6>FOR SPEED & MINIMAL OVERHEAD</h6>
 					</div>
 
 					
 					<p>
-						A confidential environment to explore anxiety, depression, trauma, and its transitions.
-						Work towards emotional regulation and lasting transformation.
+						A lightweight, high-performance PHP MVC framework designed for 
+						speed and minimal overhead. It is built to be "obsessed with 
+						speed" by loading only the bare essentials.
 					</p>
 				
 					{*
@@ -240,14 +245,14 @@ ul.custom-list-image > li::before {
 							<img src="/assets/icons/security-white.svg" />
 						</div>
 						<h2>Secured by Default</h2>
-						<h6>STRENGTHENING CONNECTION.</h6>
+						<h6>ENTERPRISE-GRADE SECURITY.</h6>
 					</div>
 					
 					
 					<p>
-						Support for partners in rebuilding trust.
-						Improving communication, resulving conflict, and deepening 
-						emotional and spiritual initimacy.
+						A high-performance PHP framework offering extreme speed and 
+						"Secured by Default" features, allowing developers to prioritize 
+						building over infrastructure hardening.
 					</p>
 					{*
 					<div class="cta-btn-wrapper dark-blue">
@@ -270,12 +275,13 @@ ul.custom-list-image > li::before {
 							<img src="/assets/icons/database.svg" />
 						</div>
 						<h2>Elegant ORM</h2>
-						<h6>HEALING WITHIN HOME.</h6>
+						<h6>INTUITIVE & DEVELOPER FRIENDLY</h6>
 					</div>
 					
 					<p>
-						A structured setting to address conflict, parenting challenges, 
-						communication breakdowns, and generation patterns.
+						An intuitive, developer-friendly database mapper that simplifies 
+						complex queries into readable code, boosting productivity through 
+						various refined and expressive syntax. It also supports GraphQL.
 					</p>
 					
 					{*
@@ -297,13 +303,14 @@ ul.custom-list-image > li::before {
 						<div class="services-icon">
 							<img src="/assets/icons/cloud.svg" />
 						</div>
-						<h2>Platform Agnostic</h2>
-						<h6>HEALING WITHIN HOME.</h6>
+						<h2>Hosting{* Platform*} Agnostic</h2>
+						<h6>FLEXIBLE AND OPERATES SEAMLESSLY</h6>
 					</div>
 					
 					<p>
-						A structured setting to address conflict, parenting challenges, 
-						communication breakdowns, and generation patterns.
+						This flexible framework operates seamlessly across any server 
+						environment, ensuring consistent performance whether deployed on-premise, 
+						via Docker, or any cloud.
 					</p>					
 					
 					{*
@@ -386,7 +393,7 @@ ul.custom-list-image > li::before {
 					<div class="mr-5">
 						<div class="logo-wrapper mb-3">
 							<a href="/">
-								<img src="/assets/images/logo.png" class="nav-bar-logo" />
+								<img src="/assets/images/logo-white.svg" class="nav-bar-logo" />
 							</a>
 						</div>
 						<p class="grey-texts">
@@ -443,7 +450,7 @@ ul.custom-list-image > li::before {
 				<div class="col-md-12">
 					<small>
 						<span class="white-texts">&copy; Copyright 2026.</span> 
-						<a href="{$site.url.home}">{$site.name}</a>
+						<a class="theme-links" href="{$site.url.home}">{$site.name}</a>
 					</small>
 				</div>
 			</div>

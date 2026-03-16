@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Color+Emoji&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --color-primary: #0093af;
+  --color-primary: #ff6600;
   --color-light-primary: #007bff;
   --color-secondary: #007bff;
   --color-theme-blue: #6bd6D0;
 }
 
-body{
+*,body{
 	font-family: "Roboto", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: normal;
 	font-style: normal;
 	font-variation-settings: "width" 100;
+	box-sizing: border-box;
 }
 
 
@@ -24,6 +25,11 @@ p{
 h1, h2, h3, h4, h5, h6{
 	font-weight: bold;
 	color: #666666;
+}
+
+.theme-links, a.theme-links{
+	color: var( --color-primary ) !important;
+	text-decoration: none;
 }
 
 .form-control{
@@ -56,7 +62,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .nav-bar-logo{
-	width: 210px;
+	width: 180px;
+	padding: 14px;
 }
 
 .nav-bar > div.nav-bar-center-menu > ul{
@@ -258,7 +265,7 @@ h1, h2, h3, h4, h5, h6{
 
 .home-slide-top-badge{
 	display: inline-block;
-	background-color: rgba( 135, 194, 47, 0.3 );
+	background-color: rgba( 255, 255, 255, 0.3 );
 	padding: 3px 14px;
 	margin: 0 0 !important;
 	border-radius: 14px;
@@ -371,7 +378,7 @@ h1, h2, h3, h4, h5, h6{
 
 .service-column  h6{
 	font-size: .7rem;
-	color: #6bd6D0;
+	color:  var( --color-primary );
 	font-weight: bold;
 }
 
@@ -387,7 +394,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .service-column.dark-blue h6{
-	color: #6bd6D0 !important;
+	color: var( --color-primary ) !important;
 	font-weight: bold !important;
 }
 
@@ -552,6 +559,7 @@ a.more-link{
 
 #footer{
 	background-color: #012A26;
+	background-color: #000000;
 	padding: 20px 0 42px 0;
 }
 
@@ -643,6 +651,10 @@ footer{
 	padding: 0px;
 }
 
+.footer-list > li {
+	list-style-type: none !important;
+}
+
 .footer-list > li > a{
 	color: #ccc !important;
 	text-decoration: none;
@@ -667,8 +679,8 @@ footer{
 #footer-newsletter-form > button{
 	display: inline-block;
 	padding: 7px 14px;
-	border: 1px solid #6BD6CE;
-	background-color: #6BD6CE;
+	border: 1px solid var( --color-primary );
+	background-color: var( --color-primary );
 	color: #ffffff;
 	border-radius: 0 7px 7px 0;
 	outline: none;

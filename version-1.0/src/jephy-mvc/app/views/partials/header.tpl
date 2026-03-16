@@ -2,7 +2,7 @@
 	<div class="container">
 		<nav class="nav-bar">
 			<div class="logo-wrapper">
-				<a href="/">
+				<a href="/home/">
 					<img src="/assets/images/logo.png" class="nav-bar-logo" />
 				</a>
 				<span id="harmbugger">
