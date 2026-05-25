@@ -1,18 +1,21 @@
+---
+---
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Color+Emoji&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --color-primary: #0093af;
+  --color-primary: #aa0000;
   --color-light-primary: #007bff;
   --color-secondary: #007bff;
   --color-theme-blue: #6bd6D0;
 }
 
-body{
+*,body{
 	font-family: "Roboto", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: normal;
 	font-style: normal;
 	font-variation-settings: "width" 100;
+	box-sizing: border-box;
 }
 
 
@@ -24,6 +27,11 @@ p{
 h1, h2, h3, h4, h5, h6{
 	font-weight: bold;
 	color: #666666;
+}
+
+.theme-links, a.theme-links{
+	color: var( --color-primary ) !important;
+	text-decoration: none;
 }
 
 .form-control{
@@ -56,14 +64,15 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .nav-bar-logo{
-	width: 210px;
+	width: 140px;
+	padding: 14px;
 }
 
 .nav-bar > div.nav-bar-center-menu > ul{
 	display: flex;
 	flex: 1;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	gap: 21px;
 	border: 0px solid #f00;
 	margin: 0px;
@@ -78,8 +87,17 @@ h1, h2, h3, h4, h5, h6{
 	display: block;
 	color: var( --color-primary ) !important;
 	text-decoration: none;
-	padding: 28px 14px;
+	padding: 21px 14px;
 	border: 0px solid #f00;
+}
+
+.nav-bar > div.nav-bar-center-menu > ul > li > a.nav-bar-book-appointment-cta{
+	background-color: var(--color-primary);
+    color: #ffffff !important;
+    font-weight: bold;
+    border-radius: 7px;
+    padding: 10px 21px !important;
+    font-size: 14px;
 }
 
 .nav-bar > div.nav-bar-center-menu > ul > li.dropdown{
@@ -151,7 +169,7 @@ h1, h2, h3, h4, h5, h6{
 	width: 100%;
 	min-height: 490px;
 	/*
-	background-image: url( /assets/images/banners/slide.jpg );
+		background-image: url( ../images/banners/slide.jpg );
 	*/
 	background-size: cover;
 	background-position: center;
@@ -166,7 +184,7 @@ h1, h2, h3, h4, h5, h6{
 	display: block;
 	width: 100%;
 	min-height: 210px;
-	background-image: url( /assets/images/banners/slide.jpg );
+	background-image: url( ../images/banners/slide.jpg );
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -179,8 +197,8 @@ h1, h2, h3, h4, h5, h6{
 	background-color: var( --color-primary );
 	display: block;
 	width: 100%;
-	min-height: 350px;
-	background-image: url( /assets/images/banners/slide.jpg );
+	min-height: 420px;
+	background-image: url( ../images/banners/slide.jpg );
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -229,17 +247,23 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .nav-bar > div.cta-column > ul > li > a.nav-bar-book-appointment-cta{
-	background-color: var( --color-secondary );
+	background-color: var( --color-primary );
 	color: #ffffff !important;
 	font-weight: bold;
 	border-radius: 7px;
 	padding: 10px 21px;
+	font-size: 14px;
+}
+
+.theme-texts{
+	color: var( --color-primary ) !important;
+	font-weight: 900;
 }
 
 .home-slide-main-heading{
 	color: #ffffff;
 	text-align: left;
-	font-size: 3.5rem;
+	font-size: 2.1rem;
 	font-weight: normal;
 }
 
@@ -258,7 +282,7 @@ h1, h2, h3, h4, h5, h6{
 
 .home-slide-top-badge{
 	display: inline-block;
-	background-color: rgba( 135, 194, 47, 0.3 );
+	background-color: rgba( 255, 255, 255, 0.3 );
 	padding: 3px 14px;
 	margin: 0 0 !important;
 	border-radius: 14px;
@@ -322,12 +346,16 @@ h1, h2, h3, h4, h5, h6{
 
 .sectional-headings h3{
 	font-weight: bold;
-	font-size: 2.8rem;
+	font-size: 2.1rem;
+}
+
+a.grey-texts{
+	color: #cccccc !important;
 }
 
 .service-column{
 	position: relative;
-	min-height: 350px;
+	min-height: 370px;
 	padding: 28px;
 	border-radius: 14px;
 	margin-bottom: 21px;
@@ -371,7 +399,7 @@ h1, h2, h3, h4, h5, h6{
 
 .service-column  h6{
 	font-size: .7rem;
-	color: #6bd6D0;
+	color:  var( --color-primary );
 	font-weight: bold;
 }
 
@@ -387,7 +415,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .service-column.dark-blue h6{
-	color: #6bd6D0 !important;
+	color: var( --color-primary ) !important;
 	font-weight: bold !important;
 }
 
@@ -552,6 +580,7 @@ a.more-link{
 
 #footer{
 	background-color: #012A26;
+	background-color: #000000;
 	padding: 20px 0 42px 0;
 }
 
@@ -643,11 +672,15 @@ footer{
 	padding: 0px;
 }
 
+.footer-list > li {
+	list-style-type: none !important;
+}
+
 .footer-list > li > a{
 	color: #ccc !important;
 	text-decoration: none;
-	line-height: 35px;
-	font-size: 16px;
+	line-height: 21px;
+	font-size: 14px;
 }
 
 #footer-newsletter-form{
@@ -667,8 +700,8 @@ footer{
 #footer-newsletter-form > button{
 	display: inline-block;
 	padding: 7px 14px;
-	border: 1px solid #6BD6CE;
-	background-color: #6BD6CE;
+	border: 1px solid var( --color-primary );
+	background-color: var( --color-primary );
 	color: #ffffff;
 	border-radius: 0 7px 7px 0;
 	outline: none;
@@ -696,6 +729,50 @@ footer{
 	z-index: 100;
 	background-color: #ffffff;
 	border-bottom: 2px solid #f7f7f7;
+}
+
+.tag-label{
+	
+}
+
+.tag-label > small{
+	background-color: rgba( 255, 255, 255, 0.3 );
+	padding: 5px 10px;
+	border-radius: 14px;
+}
+
+.tag-label > small > img{
+	width: 14px;	
+}
+
+.flex-row{
+	display: flex;
+	gap: 14px;
+}
+
+ul.dark-hero-cta{
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.dark-hero-cta > li{
+	list-style-type: none;
+}
+
+ul.dark-hero-cta > li > a{
+	color: #ffffff !important;
+	font-size: 12px;
+	text-decoration: none;
+}
+ul.dark-hero-cta > li > a.theme-bg{
+	background-color: var( --color-primary );
+	padding: 10px 12px;
+	border-radius: 7px;
+}
+
+.dark-hero-cta li > a img{
+	width: 14px;
+	margin: 0 7px;
 }
 
 @media (max-width: 768px) {
@@ -835,4 +912,3 @@ footer{
 	}
 
 }
-

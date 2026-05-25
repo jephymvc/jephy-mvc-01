@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>Documentation</title>
+<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+<link href="/assets/css/documentation.css" rel="stylesheet" />
+
+<style>
+</style>
+</head>
+<body>
+<header>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="doc-nav-bar">
+					
+					<div class="logo-menu-wrapper flex-1">
+						<ul>
+							<li class="header-logo">
+								<a href="/">
+									<img src="/assets/images/logo.svg" />
+								</a>
+							</li>
+							
+							
+							<li class="header-menu">
+								<a href="/docs/getting-started">
+									<img src="/assets/images/icons/book-open.svg" />
+									Docs
+								</a>
+							</li>
+							
+							<!---->
+							<li class="header-menu">
+								<a href="/home/">
+									<img src="/assets/images/icons/code.svg" />
+									API
+								</a>
+							</li>
+							
+							<li class="header-menu">
+								<a href="/community">
+									<img src="/assets/images/icons/users-1.svg" />
+									Community
+								</a>
+							</li>
+							<li class="header-menu"><a href="/blog">Github</a></li>
+							
+						</ul>				
+					</div>
+					
+					
+					<div style="border: 0px solid #f00;" class="search-cta-wrapper flex-1">
+						<ul>
+							<li>
+								<form class="header-search-form">
+									<input type="text" id="search" placeholder="Search docs..." />
+								</form>
+							</li>
+							<!--
+							<li>
+								<a class="header-cta" target="_blank" href="">
+									Get Started
+								</a>
+							</li>
+							-->
+						</ul>
+					</div>
+					
+				</nav>
+			</div>
+		</div>
+		
+	</div>
+</header>
+
+<main>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="grid-layout">
+				
+					<aside class="left">
+						<div>
+							<ul>
+
+<!--
+<li class="aside-heading">
+	<span>PROLOGUE</span>
+</li>
+<li>
+	<a>
+		Release Notes
+	</a>
+</li>
+<li>
+	<a>
+		Upgrade Guide
+	</a>
+</li>
+<li>
+	<a>
+		Contribution Guide
+	</a>
+</li>
+-->
+
+
+<li class="aside-heading">
+	<span data-target="getting-started">GETTING STARTED</span>
+</li>
+
+<li>
+	<a class="active">
+		Overview
+	</a>
+</li>
+
+<li>
+	<a class="">
+		Key Features
+	</a>
+</li>
+
+<li>
+	<a class="">
+		Core Concepts
+
+	</a>
+</li>
+
+<li>
+	<a>
+		Installation
+	</a>
+</li>
+
+<li>
+	<a>
+		Requirements
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Directory Structure
+	</a>
+</li>
+
+<li>
+	<a>
+		Configuration System
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Basic Usage Example
+	</a>
+</li>
+
+
+
+<li>
+	<a>
+		Why Smarty?
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Common Tasks
+	</a>
+</li>
+
+<li>
+	<a>
+		Updating the Framework
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Support & Community
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="deployment-guide">
+		DEPLOYMENT GUIDE
+	</span>
+</li>
+<li>
+	<a>
+		Overview
+	</a>
+</li>
+<li>
+	<a>
+		Pre-Deployment Checklist
+	</a>
+</li>
+<li>
+	<a>
+		Shared Hosting Deployment
+	</a>
+</li>
+
+<li>
+	<a>
+		VPS / Dedicated Server Deployment
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Cloud Platform Deployment
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Security Hardening
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Monitoring & Maintenance
+	</a>
+</li>
+
+<li>
+	<a data-target="troubleshooting-deployment">
+		Troubleshooting Deployment
+	</a>
+</li>
+
+<li>
+	<a data-target="quick-reference-platform-commands">
+		Quick Reference: Platform Commands
+	</a>
+</li>
+
+
+
+
+<li class="aside-heading">
+	<span data-target="architecture">ARCHITECTURE</span>
+</li>
+
+<li>
+	<a>
+		MVC (Model-View-Controller)
+	</a>
+</li>
+<li>
+	<a>
+		Service Container
+	</a>
+</li>
+<li>
+	<a>
+		Middleware pipeline
+	</a>
+</li>
+<li>
+	<a>
+		Request Life Cycle
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="core-concepts">CORE CONCEPTS</span>
+</li>
+
+<li>
+	<a>
+		Routing
+	</a>
+</li>
+
+<li>
+	<a>
+		ORM - Active Record Styled
+	</a>
+</li>								
+
+<li>
+	<a>
+		Dependency Injection
+	</a>
+</li>
+
+<li>
+	<a>
+		Smarty Engine templating
+	</a>
+</li>
+
+<li>
+	<a>
+		Queues
+	</a>
+</li>
+<li>
+	<a>
+		Events
+	</a>
+</li>
+
+<li>
+	<a>
+		Service Container
+	</a>
+</li>
+
+<li>
+	<a>
+		View/Template Engine
+	</a>
+</li>	
+
+<li>
+	<a>
+		Models
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Classes
+	</a>
+</li>
+
+<li>
+	<a>
+		Entities
+	</a>
+</li>								
+
+
+<li class="aside-heading">
+	<span data-target="apis">APIs</span>
+</li>
+
+
+<li>
+	<a>
+		RESTful API
+	</a>
+</li>
+
+<li>
+	<a>
+		GraphQL API
+	</a>
+</li>
+
+
+
+<li class="aside-heading">
+	<span data-target="database">DATABASE</span>
+</li>
+
+<li>
+	<a>
+		QueryBuilder
+	</a>
+</li>						
+
+<li>
+	<a>
+		ORM
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="mail">MAIL</span>
+</li>
+
+<li>
+	<a>
+		Sending Mail
+	</a>
+</li>
+
+
+
+<li class="aside-heading">
+	<span data-target="security-authentication">SECURITY/AUTHENTICATION</span>
+</li>
+
+
+<li>
+	<a>
+		Form Validation
+	</a>
+</li>
+
+
+<li><a>Authentication with Ajax call</a></li>										
+<li><a>Authentication with redirect/reload</a></li>										
+<li><a>Authentication with JSON Web Token</a></li>								
+
+
+<li>
+	<a>
+		JSON Web Token
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Data Encryption
+	</a>
+</li>
+
+<li>
+	<a>
+		Security Tips/Recommentions
+	</a>
+</li>
+
+<li class="aside-heading">
+	<span data-target="others">OTHERS</span>
+</li>								
+
+<li>
+	<a>
+		Working with forms
+	</a>
+</li>
+
+<li>
+	<a>
+		Asynchronous Requests
+	</a>
+</li>
+
+<li class="aside-heading">
+	<span data-target="sample-projects">SAMPLE PROJECTS</span>
+</li>								
+
+<li>
+	<a>
+		Login System with Redirect
+	</a>
+</li>
+
+<li>
+	<a>
+		Login System with Ajax
+	</a>
+</li>								
+
+<li>
+	<a>
+		Login System with 2FA OTP
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Signup with Account Activation Link
+	</a>
+</li>
+								
+
+<li>
+	<a>
+		Signup with Account Activation OTP
+	</a>
+</li>
+
+<li>
+	<a>
+		Newsletter Subscription
+	</a>
+</li>
+
+<li>
+	<a>
+		Guest Message/Contact Form
+	</a>
+</li>
+
+
+
+
+
+</ul>
+						</div>
+					</aside>
+					
+					<div id="center-column" class="center px-3">					
+						<div>
+							<h1 id="getting-started">Getting Started</h1>
+<h2 id="installation">Installation</h2>
+
+<p>Get up and running with Jephy MVC</p>
+
+<h1 id="baseentity-class-usage-guide">BaseEntity Class Usage Guide</h1>
+<h2 id="overview">Overview</h2>
+
+<p><strong>BaseEntity</strong> is an abstract Active Record pattern implementation for PHP that provides database CRUD operations with automatic timestamp handling, query building, and entity management.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Your application must have a <strong>Database</strong> class with the following methods:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">getInstance()</code> - returns database singleton</li>
+  <li><code class="language-plaintext highlighter-rouge">insert($table, $data)</code> - returns inserted ID</li>
+  <li><code class="language-plaintext highlighter-rouge">update($table, $data, $where)</code> - returns affected rows</li>
+  <li><code class="language-plaintext highlighter-rouge">delete($table, $where)</code> - returns affected rows</li>
+  <li><code class="language-plaintext highlighter-rouge">select($table, $columns, $where, $orderBy, $limit, $offset)</code> - returns array of results</li>
+  <li><code class="language-plaintext highlighter-rouge">count($table, $where)</code> - returns row count</li>
+</ul>
+
+<h2 id="creating-entity-classes">Creating Entity Classes</h2>
+
+<p>Extend <code class="language-plaintext highlighter-rouge">BaseEntity.php</code> for each database table:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">// User.php</span>
+<span class="kn">namespace</span> <span class="nn">App\Models</span><span class="p">;</span>
+
+<span class="kn">use</span> <span class="nc">App\Core\BaseEntity</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">User</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">'users'</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="basic-crud-operations">Basic CRUD Operations</h2>
+
+<h3 id="create-new-record">Create New Record</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Method 1: Using constructor + save()</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="p">([</span>
+    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John Doe'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'john@example.com'</span>
+<span class="p">]);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
+
+<span class="c1">// Method 2: Using create() static method</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">create</span><span class="p">([</span>
+    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Jane Smith'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'jane@example.com'</span>
+<span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="read-records">Read Records</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Find by ID</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Find all records</span>
+<span class="nv">$allUsers</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
+
+<span class="c1">// Find with conditions (findMany)</span>
+<span class="nv">$admins</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'role'</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="c1">// Find first matching record</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findFirst</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'john@example.com'</span><span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="c1">// Using where() fluent interface</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">where</span><span class="p">([</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="nf">orderBy</span><span class="p">(</span><span class="s1">'created_at DESC'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">get</span><span class="p">();</span>
+
+<span class="c1">// Get first result from query</span>
+<span class="nv">$firstUser</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">where</span><span class="p">([</span><span class="s1">'role'</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">])</span><span class="o">-&gt;</span><span class="nf">first</span><span class="p">();</span>
+
+<span class="c1">// Count records</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nb">count</span><span class="p">([</span><span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">]]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="update-records">Update Records</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Method 1: Modify property and save</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'John Updated'</span><span class="p">;</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
+
+<span class="c1">// Method 2: Using update() method</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">update</span><span class="p">([</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John Updated'</span><span class="p">,</span> <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'new@example.com'</span><span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="delete-records">Delete Records</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Delete single entity</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
+
+<span class="c1">// Delete by conditions</span>
+<span class="nc">User</span><span class="o">::</span><span class="nf">deleteWhere</span><span class="p">([</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'inactive'</span><span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="advanced-query-features">Advanced Query Features</h2>
+
+<h3 id="like-queries-with-processwhereconditions">LIKE Queries with ProcessWhereConditions</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Using string with wildcards</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'%john%'</span><span class="p">]</span>  <span class="c1">// LIKE '%john%'</span>
+<span class="p">]);</span>
+
+<span class="c1">// Using Prisma-style syntax</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'contains'</span> <span class="o">=&gt;</span> <span class="s1">'john'</span><span class="p">],</span>     <span class="c1">// LIKE '%john%'</span>
+        <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'startsWith'</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">],</span> <span class="c1">// LIKE 'admin%'</span>
+        <span class="s1">'bio'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'endsWith'</span> <span class="o">=&gt;</span> <span class="s1">'dev'</span><span class="p">]</span>        <span class="c1">// LIKE '%dev'</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="c1">// Advanced LIKE operators</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'like'</span> <span class="o">=&gt;</span> <span class="s1">'%john%'</span><span class="p">],</span>
+        <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'notLike'</span> <span class="o">=&gt;</span> <span class="s1">'%spam%'</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="complex-where-conditions">Complex Where Conditions</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Where NOT conditions</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">],</span>
+    <span class="s1">'whereNot'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'role'</span> <span class="o">=&gt;</span> <span class="s1">'banned'</span><span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="c1">// With ordering and pagination</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">],</span>
+    <span class="s1">'orderBy'</span> <span class="o">=&gt;</span> <span class="s1">'created_at DESC'</span><span class="p">,</span>
+    <span class="s1">'take'</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s1">'skip'</span> <span class="o">=&gt;</span> <span class="mi">40</span>
+<span class="p">]);</span>
+
+<span class="c1">// Using count with conditions</span>
+<span class="nv">$activeUsers</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nb">count</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">]</span>
+<span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="alternative-find-methods">Alternative Find Methods</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// findManyAlt - No LIKE processing (faster for simple queries)</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findManyAlt</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">],</span>
+    <span class="s1">'orderBy'</span> <span class="o">=&gt;</span> <span class="s1">'name ASC'</span>
+<span class="p">]);</span>
+
+<span class="c1">// findFirstAlt - No LIKE processing</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findFirstAlt</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'exact@match.com'</span><span class="p">]</span>
+<span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="query-builder-interface">Query Builder Interface</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Fluent query builder</span>
+<span class="nv">$users</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">query</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">where</span><span class="p">([</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="nf">where</span><span class="p">([</span><span class="s1">'role'</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="nf">orderBy</span><span class="p">(</span><span class="s1">'created_at DESC'</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="nf">get</span><span class="p">();</span>
+
+<span class="c1">// Get first with query builder</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">query</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">where</span><span class="p">([</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'test@example.com'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="nf">first</span><span class="p">();</span>
+
+<span class="c1">// Count with query builder</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">query</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="nf">where</span><span class="p">([</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="nb">count</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="entity-state-management">Entity State Management</h2>
+
+<h3 id="checking-changes">Checking Changes</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'New Name'</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">isDirty</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nv">$changes</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">getDirty</span><span class="p">();</span>  <span class="c1">// Returns ['name' =&gt; 'New Name']</span>
+    <span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="refreshing-entity">Refreshing Entity</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Temporary'</span><span class="p">;</span>
+
+<span class="c1">// Revert to database state</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">refresh</span><span class="p">();</span>  <span class="c1">// Name reverts to original value</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="property-access">Property Access</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Magic getter/setter</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="p">([</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span><span class="p">]);</span>
+<span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>  <span class="c1">// John</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="n">email</span> <span class="o">=</span> <span class="s1">'john@example.com'</span><span class="p">;</span>
+
+<span class="c1">// Check if property exists</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Property exists</span>
+<span class="p">}</span>
+
+<span class="c1">// Convert to array</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">toArray</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="timestamp-handling">Timestamp Handling</h2>
+
+<p>The class automatically handles timestamps:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">created_at</code> - automatically set on insert if not provided</li>
+  <li><code class="language-plaintext highlighter-rouge">updated_at</code> - automatically updated in <code class="language-plaintext highlighter-rouge">update()</code> method (not in basic <code class="language-plaintext highlighter-rouge">save()</code>)</li>
+</ul>
+
+<p><strong>Note:</strong> Only the <code class="language-plaintext highlighter-rouge">update()</code> method and <code class="language-plaintext highlighter-rouge">save()</code> automatically set <code class="language-plaintext highlighter-rouge">updated_at</code>. Basic <code class="language-plaintext highlighter-rouge">save()</code> only sets <code class="language-plaintext highlighter-rouge">created_at</code>.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ol>
+  <li>Always define <code class="language-plaintext highlighter-rouge">$table</code> in your entity classes</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">create()</code> for simple record creation</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">findMany()</code> with <code class="language-plaintext highlighter-rouge">take</code>/<code class="language-plaintext highlighter-rouge">skip</code> for pagination</li>
+  <li>Check <code class="language-plaintext highlighter-rouge">isDirty()</code> before saving to avoid unnecessary updates</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">refresh()</code> after external updates to sync entity state</li>
+  <li>Prefer Prisma-style syntax (<code class="language-plaintext highlighter-rouge">contains</code>, <code class="language-plaintext highlighter-rouge">startsWith</code>, <code class="language-plaintext highlighter-rouge">endsWith</code>) for LIKE queries</li>
+</ol>
+
+<h2 id="example-complete-user-workflow">Example: Complete User Workflow</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>
+<span class="c1">// Create user</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">create</span><span class="p">([</span>
+    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John Doe'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'john@example.com'</span><span class="p">,</span>
+    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span>
+<span class="p">]);</span>
+
+<span class="c1">// Update user</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="nf">update</span><span class="p">([</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'inactive'</span><span class="p">]);</span>
+
+<span class="c1">// Query users</span>
+<span class="nv">$activeUsers</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'active'</span><span class="p">],</span>
+    <span class="s1">'orderBy'</span> <span class="o">=&gt;</span> <span class="s1">'name ASC'</span>
+<span class="p">]);</span>
+
+<span class="c1">// Search users</span>
+<span class="nv">$searchResults</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findMany</span><span class="p">([</span>
+    <span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'contains'</span> <span class="o">=&gt;</span> <span class="s1">'john'</span><span class="p">]]</span>
+<span class="p">]);</span>
+
+<span class="c1">// Delete if exists</span>
+<span class="k">if</span> <span class="p">(</span><span class="nc">User</span><span class="o">::</span><span class="nf">exists</span><span class="p">([</span><span class="s1">'where'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'old@example.com'</span><span class="p">]]))</span> <span class="p">{</span>
+    <span class="nc">User</span><span class="o">::</span><span class="nf">deleteWhere</span><span class="p">([</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'old@example.com'</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="notes--limitations">Notes &amp; Limitations</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">whereNot</code> conditions are converted to <code class="language-plaintext highlighter-rouge">!=</code> operators (array/IN not supported)</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Database</code> class must handle operator arrays in the <code class="language-plaintext highlighter-rouge">where</code> parameter</li>
+  <li>No built-in relationship handling (requires implementation in child classes)
+```</li>
+</ul>
+
+						</div>					
+					</div>
+					
+					
+					
+					
+					<div class="track-column right">
+						<div>
+							<h3>ON THIS PAGE</h3>
+							<ul id="right-column-ul">
+								<!--
+									<li>
+										<a class="active">Meet Jephy MVC</a>
+									</li>
+									<li>
+										<a>Installing Jephy MVC</a>
+									</li>
+									<li>
+										<a>System Requirements</a>
+									</li>
+								-->								
+							</ul>
+						</div>
+						
+						
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+<script>
+const header = document.querySelectorAll( "header" )[0];
+header.classList.remove( "fixed-header" );
+window.addEventListener( "scroll", () => {
+	if( window.scrollY > 210 ){
+		header.classList.add( "fixed-header" );
+	}else{
+		header.classList.remove( "fixed-header" );
+	}
+} );
+</script>
+
+<script>
+const rightColumnUl = document.querySelector( "#right-column-ul" );
+const centerColumn = document.querySelector( "#center-column" );
+
+[...centerColumn.querySelectorAll( "h2, h3" )].forEach( ( it ) => {
+	const a = document.createElement( 'a' );
+	const li = document.createElement( 'li' );
+	a.textContent = it.textContent.replace( "<span class=\"sub-heading\">#</span>", "" ); 
+	li.appendChild( a );
+	rightColumnUl.appendChild( li );
+} );
+rightColumnUl.querySelectorAll( "li > a" )[0].classList.add( "active" );
+
+
+const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
+[...asideHeading].forEach( ( it ) => {
+	it.style.cursor = "pointer";
+	it.addEventListener( "click", ( evt ) => {
+		location.href = "/docs/" + it.getAttribute( "data-target" );
+	} );
+} );
+
+</script>
+
+</body>
+</html>

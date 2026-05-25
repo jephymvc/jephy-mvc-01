@@ -4791,3 +4791,4 @@
 [Sat May 23 15:38:53.147147 2026] [php:notice] [pid 11232:tid 2072] [client 127.0.0.1:55716] isLoggedIn function registered with Smarty
 [Sat May 23 15:39:07.430823 2026] [php:notice] [pid 11232:tid 2076] [client 127.0.0.1:55719] isLoggedIn function registered with Smarty, referer: http://www.jephy-mvc.loc/
 [Mon May 25 03:27:24.401927 2026] [php:notice] [pid 13344:tid 2096] [client 127.0.0.1:60121] isLoggedIn function registered with Smarty, referer: http://www.jephy-mvc.loc/getting-started
+[Mon May 25 05:46:30.843669 2026] [php:notice] [pid 1044:tid 2096] [client 127.0.0.1:62421] isLoggedIn function registered with Smarty
