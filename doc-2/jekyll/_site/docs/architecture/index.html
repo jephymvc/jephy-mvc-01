@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>Documentation</title>
+<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+<link href="/assets/css/documentation.css" rel="stylesheet" />
+
+<style>
+</style>
+</head>
+<body>
+<header>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="doc-nav-bar">
+					
+					<div class="logo-menu-wrapper flex-1">
+						<ul>
+							<li class="header-logo">
+								<a href="/">
+									<img src="/assets/images/logo.svg" />
+								</a>
+							</li>
+							
+							
+							<li class="header-menu">
+								<a href="/docs/getting-started">
+									<img src="/assets/images/icons/book-open.svg" />
+									Docs
+								</a>
+							</li>
+							
+							<!---->
+							<li class="header-menu">
+								<a href="/home/">
+									<img src="/assets/images/icons/code.svg" />
+									API
+								</a>
+							</li>
+							
+							<li class="header-menu">
+								<a href="/community">
+									<img src="/assets/images/icons/users-1.svg" />
+									Community
+								</a>
+							</li>
+							<li class="header-menu"><a href="/blog">Github</a></li>
+							
+						</ul>				
+					</div>
+					
+					
+					<div style="border: 0px solid #f00;" class="search-cta-wrapper flex-1">
+						<ul>
+							<li>
+								<form class="header-search-form">
+									<input type="text" id="search" placeholder="Search docs..." />
+								</form>
+							</li>
+							<!--
+							<li>
+								<a class="header-cta" target="_blank" href="">
+									Get Started
+								</a>
+							</li>
+							-->
+						</ul>
+					</div>
+					
+				</nav>
+			</div>
+		</div>
+		
+	</div>
+</header>
+
+<main>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="grid-layout">
+				
+					<aside class="left">
+						<div>
+							<ul>
+
+<!--
+<li class="aside-heading">
+	<span>PROLOGUE</span>
+</li>
+<li>
+	<a>
+		Release Notes
+	</a>
+</li>
+<li>
+	<a>
+		Upgrade Guide
+	</a>
+</li>
+<li>
+	<a>
+		Contribution Guide
+	</a>
+</li>
+-->
+
+
+<li class="aside-heading">
+	<span data-target="getting-started">GETTING STARTED</span>
+</li>
+
+<li>
+	<a class="active">
+		Overview
+	</a>
+</li>
+
+<li>
+	<a class="">
+		Key Features
+	</a>
+</li>
+
+<li>
+	<a class="">
+		Core Concepts
+
+	</a>
+</li>
+
+<li>
+	<a>
+		Installation
+	</a>
+</li>
+
+<li>
+	<a>
+		Requirements
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Directory Structure
+	</a>
+</li>
+
+<li>
+	<a>
+		Configuration System
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Basic Usage Example
+	</a>
+</li>
+
+
+
+<li>
+	<a>
+		Why Smarty?
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Common Tasks
+	</a>
+</li>
+
+<li>
+	<a>
+		Updating the Framework
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Support & Community
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="deployment-guide">
+		DEPLOYMENT GUIDE
+	</span>
+</li>
+<li>
+	<a>
+		Overview
+	</a>
+</li>
+<li>
+	<a>
+		Pre-Deployment Checklist
+	</a>
+</li>
+<li>
+	<a>
+		Shared Hosting Deployment
+	</a>
+</li>
+
+<li>
+	<a>
+		VPS / Dedicated Server Deployment
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Cloud Platform Deployment
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Security Hardening
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Monitoring & Maintenance
+	</a>
+</li>
+
+<li>
+	<a data-target="troubleshooting-deployment">
+		Troubleshooting Deployment
+	</a>
+</li>
+
+<li>
+	<a data-target="quick-reference-platform-commands">
+		Quick Reference: Platform Commands
+	</a>
+</li>
+
+
+
+
+<li class="aside-heading">
+	<span data-target="architecture">ARCHITECTURE</span>
+</li>
+
+<li>
+	<a>
+		MVC (Model-View-Controller)
+	</a>
+</li>
+<li>
+	<a>
+		Service Container
+	</a>
+</li>
+<li>
+	<a>
+		Middleware pipeline
+	</a>
+</li>
+<li>
+	<a>
+		Request Life Cycle
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="core-concepts">CORE CONCEPTS</span>
+</li>
+
+<li>
+	<a>
+		Routing
+	</a>
+</li>
+
+<li>
+	<a>
+		ORM - Active Record Styled
+	</a>
+</li>								
+
+<li>
+	<a>
+		Dependency Injection
+	</a>
+</li>
+
+<li>
+	<a>
+		Smarty Engine templating
+	</a>
+</li>
+
+<li>
+	<a>
+		Queues
+	</a>
+</li>
+<li>
+	<a>
+		Events
+	</a>
+</li>
+
+<li>
+	<a>
+		Service Container
+	</a>
+</li>
+
+<li>
+	<a>
+		View/Template Engine
+	</a>
+</li>	
+
+<li>
+	<a>
+		Models
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Classes
+	</a>
+</li>
+
+<li>
+	<a>
+		Entities
+	</a>
+</li>								
+
+
+<li class="aside-heading">
+	<span data-target="apis">APIs</span>
+</li>
+
+
+<li>
+	<a>
+		RESTful API
+	</a>
+</li>
+
+<li>
+	<a>
+		GraphQL API
+	</a>
+</li>
+
+
+
+<li class="aside-heading">
+	<span data-target="database">DATABASE</span>
+</li>
+
+<li>
+	<a>
+		QueryBuilder
+	</a>
+</li>						
+
+<li>
+	<a>
+		ORM
+	</a>
+</li>
+
+
+<li class="aside-heading">
+	<span data-target="mail">MAIL</span>
+</li>
+
+<li>
+	<a>
+		Sending Mail
+	</a>
+</li>
+
+
+
+<li class="aside-heading">
+	<span data-target="security-authentication">SECURITY/AUTHENTICATION</span>
+</li>
+
+
+<li>
+	<a>
+		Form Validation
+	</a>
+</li>
+
+
+<li><a>Authentication with Ajax call</a></li>										
+<li><a>Authentication with redirect/reload</a></li>										
+<li><a>Authentication with JSON Web Token</a></li>								
+
+
+<li>
+	<a>
+		JSON Web Token
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Data Encryption
+	</a>
+</li>
+
+<li>
+	<a>
+		Security Tips/Recommentions
+	</a>
+</li>
+
+<li class="aside-heading">
+	<span data-target="others">OTHERS</span>
+</li>								
+
+<li>
+	<a>
+		Working with forms
+	</a>
+</li>
+
+<li>
+	<a>
+		Asynchronous Requests
+	</a>
+</li>
+
+<li class="aside-heading">
+	<span data-target="sample-projects">SAMPLE PROJECTS</span>
+</li>								
+
+<li>
+	<a>
+		Login System with Redirect
+	</a>
+</li>
+
+<li>
+	<a>
+		Login System with Ajax
+	</a>
+</li>								
+
+<li>
+	<a>
+		Login System with 2FA OTP
+	</a>
+</li>
+
+
+<li>
+	<a>
+		Signup with Account Activation Link
+	</a>
+</li>
+								
+
+<li>
+	<a>
+		Signup with Account Activation OTP
+	</a>
+</li>
+
+<li>
+	<a>
+		Newsletter Subscription
+	</a>
+</li>
+
+<li>
+	<a>
+		Guest Message/Contact Form
+	</a>
+</li>
+
+
+
+
+
+</ul>
+						</div>
+					</aside>
+					
+					<div id="center-column" class="center px-3">					
+						<div>
+							<div class="center-breadcrumbs mt-1 mb-4">
+	<div>
+		<a href="/docs/overview">Docs</a>
+	</div>
+	<span class="breadcrumb-divider">
+		<img src="/assets/images/icons/arrow-right.svg" />
+	</span>
+
+	<div>Architecture </div>															
+</div>
+
+<h1>Architecture</h1>
+<h2><span class="sub-heading">#</span>  Overview</h2>
+<div id="overview">
+	<p>
+		JephyPHP Framework Documentation follows a clean, modular architecture that separates concerns 
+		while maintaining high performance and flexibility. This section explains the 
+		core architectural patterns and how different components interact to handle 
+		HTTP requests.
+	</p>
+	
+	
+	
+</div>
+
+
+<div id="mvc-model-view-controller" class="my-4">
+<h2>MVC (Model-View-Controller)</h2>
+<p>
+	JephyPHP Framework Documentation implements the classic Model-View-Controller pattern with 
+	modern enhancements, providing clear separation between business 
+	logic, presentation, and request handling.
+</p>
+
+<h2>The Three Components</h2>
+
+<table class="table table-config-info">
+	<thead>
+		<tr>
+			<th>Component</th>
+			<th>Responsibility</th>
+			<th>Directory</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr>
+			<td>Model</td>	
+			<td>Business logic, data access, validation</td>	
+			<td><code>jephy-mvc/app/models/</code></td>
+		</tr>
+		<tr>
+			<td>View</td>	
+			<td>Presentation layer, user interface	</td>
+			<td><code>jephy-mvc/app/views/</code></td>
+		</tr>
+		<tr>
+			<td>Controller</td>	
+			<td>Request handling, orchestration	</td>
+			<td><code>jephy-mvc/app/controllers/</code></td>
+		<tr>
+	</tbody>
+</table>
+
+<h2>How MVC Works in Jephy-MVC</h2>
+
+<pre>
+
+php
+
+// 1. Route points to Controller
+// jephy-mvc/routes.php
+$router->get('/products/{id}', 'ProductController@show');
+
+// 2. Controller receives request
+// jephy-mvc/app/controllers/ProductController.php
+namespace App\Controllers;
+
+use App\Models\Product;
+use Core\Controller;
+
+class ProductController extends Controller {
+    public function show($id) {
+        // 3. Controller asks Model for data
+        $product = Product::find($id);
+        $relatedProducts = Product::where('category_id', $product->category_id)->limit(4)->get();
+        
+        // 4. Controller passes data to View
+        $this->view->assign('product', $product);
+        $this->view->assign('related', $relatedProducts);
+        $this->view->assign('pageTitle', $product->name);
+        
+        // 5. View renders HTML
+        return $this->view->display('products/show.tpl');
+    }
+}
+
+// 6. Model handles data logic
+// jephy-mvc/app/models/Product.php
+namespace App\Models;
+
+use Core\Model;
+
+class Product extends Model {
+    protected $table = 'products';
+    protected $fillable = ['name', 'price', 'description', 'category_id'];
+    
+    public function getDiscountedPrice() {
+        return $this->price * 0.9; // 10% discount logic
+    }
+}
+
+// 7. View presents data
+// jephy-mvc/app/views/products/show.tpl
+{extends file="layouts/app.tpl"}
+
+{block name="content"}
+    &lt;h1&gt;{$product->name|escape}&lt;/h1&gt;
+    &lt;p class="price"&gt;${$product->price}&lt;/p&gt;
+    &lt;p class="discount"&gt;Special: ${$product->getDiscountedPrice()}&lt;/p&gt;
+    &lt;div class="description"&gt;{$product->description}&lt;/div&gt;
+    
+    &lt;h3>Related Products&lt;/h3&gt;
+    {foreach $related as $item}
+        &lt;a href="/products/{$item->id}">{$item->name}&lt;/a&gt;
+    {/foreach}
+{/block}
+
+</pre>
+
+
+<h2>MVC Flow Diagram</h2>
+<pre>
+Browser Request
+      │
+      ▼
+   Router ──────► Middleware Pipeline
+      │
+      ▼
+  Controller ◄─── Request Object
+      │
+      ├──────► Model ◄───► Database
+      │
+      └──────► View (Smarty Template)
+                   │
+                   ▼
+              HTTP Response
+</pre>
+
+<h2>Best Practices for MVC</h2>
+<h6>Do's:</h6>
+<ul>
+	<li>Keep controllers thin (only request handling and orchestration)</li>
+	<li>Put business logic in models</li>
+	<li>Keep views free of PHP logic (use Smarty templates)</li>
+	<li>Use dependency injection in controllers</li>
+</ul>
+
+<h6>Don'ts:</h6>
+<ul>
+	<li>Don't put database queries directly in views</li>
+	<li>Don't perform complex business logic in controllers</li>
+	<li>Don't echo or print from controllers (always return)</li>
+	<li>
+		Don't access <code>$_POST</code>/<code>$_GET</code> 
+		directly (use request object) except you know what you are doing.
+	</li>
+</ul>
+
+
+<h2>Service Container</h2>
+<p>
+The Service Container is a powerful tool for managing class dependencies 
+and performing dependency injection. It allows you to register, resolve, 
+and manage services throughout your application.
+</p>
+
+
+<h2>What is a Service Container?</h2>
+<p>
+A Service Container (also known as a Dependency Injection Container) is 
+an object that knows how to create and configure other objects. It 
+manages dependencies and reduces tight coupling between classes.
+</p>
+
+<h2>Core Service Container Implementation</h2>
+<pre>
+// jephy-mvc/core/Container.php
+namespace Core;
+
+class Container {
+    private static $instance = null;
+    private $bindings = [];
+    private $instances = [];
+    
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    
+    // Bind an interface/class to a concrete implementation
+    public function bind($abstract, $concrete = null, $singleton = false) {
+        if ($concrete === null) {
+            $concrete = $abstract;
+        }
+        
+        $this->bindings[$abstract] = [
+            'concrete' => $concrete,
+            'singleton' => $singleton
+        ];
+    }
+    
+    // Bind a singleton (one instance for entire application)
+    public function singleton($abstract, $concrete = null) {
+        $this->bind($abstract, $concrete, true);
+    }
+    
+    // Resolve a class from the container
+    public function make($abstract, $parameters = []) {
+        // Return existing instance if singleton
+        if (isset($this->instances[$abstract])) {
+            return $this->instances[$abstract];
+        }
+        
+        // Get binding or use abstract as concrete
+        $binding = $this->bindings[$abstract] ?? [
+            'concrete' => $abstract,
+            'singleton' => false
+        ];
+        
+        $concrete = $binding['concrete'];
+        
+        // Build the object
+        $object = $this->build($concrete, $parameters);
+        
+        // Store if singleton
+        if ($binding['singleton']) {
+            $this->instances[$abstract] = $object;
+        }
+        
+        return $object;
+    }
+    
+    // Build an object using reflection
+    private function build($class, $parameters = []) {
+        $reflection = new \ReflectionClass($class);
+        
+        if (!$reflection->isInstantiable()) {
+            throw new \Exception("Class {$class} is not instantiable");
+        }
+        
+        $constructor = $reflection->getConstructor();
+        
+        if ($constructor === null) {
+            return $reflection->newInstance();
+        }
+        
+        $constructorParams = $constructor->getParameters();
+        $dependencies = [];
+        
+        foreach ($constructorParams as $param) {
+            $paramType = $param->getType();
+            
+            if ($paramType && !$paramType->isBuiltin()) {
+                // Resolve dependency from container
+                $dependencies[] = $this->make($paramType->getName());
+            } elseif (isset($parameters[$param->getName()])) {
+                // Use passed parameter
+                $dependencies[] = $parameters[$param->getName()];
+            } else {
+                // Use default value if available
+                if ($param->isDefaultValueAvailable()) {
+                    $dependencies[] = $param->getDefaultValue();
+                } else {
+                    throw new \Exception("Cannot resolve dependency {$param->getName()}");
+                }
+            }
+        }
+        
+        return $reflection->newInstanceArgs($dependencies);
+    }
+}
+</pre>
+
+<h2>Registering Services</h2>
+<p>Create a service provider or register in bootstrap.php:</p>
+
+<pre>
+
+// jephy-mvc/bootstrap.php
+use Core\Container;
+
+$container = Container::getInstance();
+
+// Bind interfaces to implementations
+$container->bind('App\Interfaces\UserRepositoryInterface', 'App\Repositories\DatabaseUserRepository');
+$container->bind('App\Interfaces\MailerInterface', 'App\Services\SmtpMailer');
+
+// Register singletons
+$container->singleton('App\Services\CacheService', function() {
+    return new \App\Services\CacheService('redis');
+});
+
+// Bind with custom factory
+$container->bind('App\Services\PaymentGateway', function() {
+    $config = Config::get('payment');
+    return new \App\Services\StripeGateway($config['api_key']);
+});
+
+</pre>
+
+<h2>Manual Resolution from Container</h2>
+<pre>
+
+php
+
+// Anywhere in your application
+$container = \Core\Container::getInstance();
+
+// Resolve a class with dependencies
+$userRepo = $container->make('App\Repositories\UserRepository');
+
+// Resolve with custom parameters
+$paymentGateway = $container->make('App\Services\StripeGateway', [
+    'apiKey' => 'sk_test_12345'
+]);
+
+</pre>
+
+<h2>Service Provider Pattern (Optional Advanced)</h2>
+<pre>
+
+// jephy-mvc/app/providers/AppServiceProvider.php
+namespace App\Providers;
+
+use Core\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider {
+    public function register() {
+        // Register services
+        $this->container->singleton('App\Services\Logger', function() {
+            return new \App\Services\FileLogger(storage_path('logs/app.log'));
+        });
+    }
+    
+    public function boot() {
+        // Boot services after all registrations
+        $logger = $this->container->make('App\Services\Logger');
+        $logger->info('Application bootstrapped');
+    }
+}
+
+
+</pre>
+
+<h2>Middleware Pipeline</h2>
+<p>
+Middleware provides a mechanism for filtering HTTP requests entering 
+your application. It sits between the client request and your 
+controller, allowing you to inspect, modify, or reject requests.
+</p>
+
+
+
+
+</div>
+
+<div id="middleware">
+
+<h2>What is Middleware?</h2>
+<p>
+Middleware acts as a series of layers that a request must pass through 
+before reaching your controller and a response must pass through before 
+being sent to the client.
+</p>
+
+<h2>Middleware Pipeline Implementation</h2>
+<pre>
+php
+
+// jephy-mvc/core/MiddlewarePipeline.php
+namespace Core;
+
+class MiddlewarePipeline {
+    private $middlewares = [];
+    private $request;
+    
+    public function __construct($request) {
+        $this->request = $request;
+    }
+    
+    // Add middleware to pipeline
+    public function add($middleware) {
+        $this->middlewares[] = $middleware;
+        return $this;
+    }
+    
+    // Add multiple middlewares
+    public function addMany(array $middlewares) {
+        foreach ($middlewares as $middleware) {
+            $this->add($middleware);
+        }
+        return $this;
+    }
+    
+    // Execute the pipeline
+    public function then($finalCallback) {
+        $pipeline = array_reduce(
+            array_reverse($this->middlewares),
+            function ($next, $middleware) {
+                return function ($request) use ($next, $middleware) {
+                    return $middleware->handle($request, $next);
+                };
+            },
+            $finalCallback
+        );
+        
+        return $pipeline($this->request);
+    }
+}
+
+</pre>
+
+<h2>Common Middleware Examples</h2>
+<h6>1. Authentication Middleware</h6>
+<pre>
+
+php
+
+// jephy-mvc/app/middleware/AuthMiddleware.php
+namespace App\Middleware;
+
+use Core\Middleware;
+
+class AuthMiddleware extends Middleware {
+    public function handle($request, $next) {
+        // Check if user is logged in
+        if (!isset($_SESSION['user_id'])) {
+            // Store intended URL for redirect after login
+            $_SESSION['intended_url'] = $_SERVER['REQUEST_URI'];
+            
+            // Redirect to login page
+            $this->redirect('/login');
+        }
+        
+        // User is authenticated, proceed
+        return $next($request);
+    }
+}
+
+</pre>
+
+
+<h6>2. Role-Based Middleware</h6>
+<pre>
+
+php
+
+/// jephy-mvc/app/middleware/AdminMiddleware.php
+namespace App\Middleware;
+
+use Core\Middleware;
+use App\Models\User;
+
+class AdminMiddleware extends Middleware {
+    public function handle($request, $next) {
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/login');
+        }
+        
+        $user = User::find($_SESSION['user_id']);
+        
+        if ($user->role !== 'admin') {
+            $this->abort(403, 'Access denied. Admin privileges required.');
+        }
+        
+        return $next($request);
+    }
+}
+</pre>
+
+
+<h6>3. Rate Limiting Middleware</h6>
+<pre>
+
+php
+
+// jephy-mvc/app/middleware/RateLimitMiddleware.php
+namespace App\Middleware;
+
+use Core\Middleware;
+
+class RateLimitMiddleware extends Middleware {
+    private $maxRequests = 60;  // requests per minute
+    private $decayMinutes = 1;
+    
+    public function handle($request, $next) {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $key = "rate_limit:{$ip}";
+        
+        if (!isset($_SESSION[$key])) {
+            $_SESSION[$key] = [
+                'count' => 1,
+                'expires_at' => time() + ($this->decayMinutes * 60)
+            ];
+        } else {
+            $data = $_SESSION[$key];
+            
+            if (time() > $data['expires_at']) {
+                // Reset counter
+                $_SESSION[$key] = [
+                    'count' => 1,
+                    'expires_at' => time() + ($this->decayMinutes * 60)
+                ];
+            } elseif ($data['count'] >= $this->maxRequests) {
+                $this->abort(429, 'Too many requests. Please try again later.');
+            } else {
+                $_SESSION[$key]['count']++;
+            }
+        }
+        
+        return $next($request);
+    }
+}
+
+
+</pre>
+
+
+<h6>4. CORS Middleware</h6>
+<pre>
+
+php
+
+// jephy-mvc/app/middleware/CorsMiddleware.php
+namespace App\Middleware;
+
+use Core\Middleware;
+
+class CorsMiddleware extends Middleware {
+    public function handle($request, $next) {
+        // Allow from any origin (configure as needed)
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+        
+        // Handle preflight requests
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(200);
+            exit;
+        }
+        
+        return $next($request);
+    }
+}
+
+</pre>
+
+
+<h6>5. CSRF Protection Middleware</h6>
+<pre>
+
+php
+
+// jephy-mvc/app/middleware/CsrfMiddleware.php
+namespace App\Middleware;
+
+use Core\Middleware;
+
+class CsrfMiddleware extends Middleware {
+    public function handle($request, $next) {
+        $excludedRoutes = ['/api/webhook', '/payment/callback']; // Routes to skip
+        
+        if (in_array($_SERVER['REQUEST_URI'], $excludedRoutes)) {
+            return $next($request);
+        }
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $request->get('csrf_token') ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+            
+            if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
+                $this->abort(403, 'CSRF token validation failed.');
+            }
+        }
+        
+        return $next($request);
+    }
+}
+
+</pre>
+
+
+<h2>Registering Middleware</h2>
+<h6>Global Middleware (runs on every request):</h6>
+<pre>
+
+php
+
+// jephy-mvc/bootstrap.php
+$app =  new Framework();
+$app->addGlobalMiddleware([
+    'App\Middleware\CorsMiddleware',
+    'App\Middleware\CsrfMiddleware',
+]);
+
+</pre>
+
+
+
+<h6>Route-Specific Middleware:</h6>
+<pre>
+
+php
+
+// jephy-mvc/routes.php
+// Single middleware
+$router->get('/dashboard', 'DashboardController@index')
+       ->middleware('AuthMiddleware');
+
+// Multiple middleware
+$router->get('/admin/users', 'AdminController@users')
+       ->middleware(['AuthMiddleware', 'AdminMiddleware']);
+
+// Group with middleware
+$router->group(['middleware' => ['AuthMiddleware']], function($router) {
+    $router->get('/profile', 'ProfileController@index');
+    $router->post('/profile/update', 'ProfileController@update');
+    $router->get('/orders', 'OrderController@index');
+});
+
+</pre>
+
+
+<h2>Middleware Order of Execution</h2>
+<h6>Middleware executes in the order they are registered:</h6>
+<pre>
+
+php
+
+Request → Middleware 1 → Middleware 2 → Middleware 3 → Controller
+           ↓ (before)      ↓ (before)      ↓ (before)
+           ↓               ↓               ↓
+           ↓ (after)       ↓ (after)       ↓ (after)
+Response ← Middleware 1 ← Middleware 2 ← Middleware 3
+
+</pre>
+
+<h6>Example with logging:</h6>
+<pre>
+
+php
+
+class LogRequestMiddleware extends Middleware {
+    public function handle($request, $next) {
+        // Before controller (request logging)
+        error_log("Request: " . $request->getMethod() . " " . $request->getUri());
+        
+        $response = $next($request);
+        
+        // After controller (response logging)
+        error_log("Response sent with status code: " . http_response_code());
+        
+        return $response;
+    }
+}
+
+</pre>
+
+
+
+</div>
+
+
+<div id="request-life-cycle">
+<h2>Request Life Cycle</h2>
+<p>
+	Understanding the request life cycle is crucial for debugging and 
+	extending Jephy-MVC. This section traces an HTTP request from entry point to response.
+</p>
+
+<h2>Complete Request Life Cycle Flow</h2>
+
+<pre>
+
+1. Entry Point (public/index.php)
+   │
+   ├─► 2. Load Configuration
+   │
+   ├─► 3. Bootstrap Framework
+   │
+   ├─► 4. Service Container Initialization
+   │
+   ├─► 5. Request Creation
+   │
+   ├─► 6. Routing
+   │
+   ├─► 7. Middleware Pipeline
+   │
+   ├─► 8. Controller Resolution
+   │
+   ├─► 9. Method Execution
+   │    │
+   │    ├─► Model Interaction (Database)
+   │    │
+   │    └─► View Rendering (Smarty)
+   │
+   ├─► 10. Response Creation
+   │
+   └─► 11. Response Sending
+
+</pre>
+
+<h2>Detailed Life Cycle Steps</h2>
+<ul>
+	<li>Entry Point (<code>public/index.php</code></li>
+	<li>Bootstrap Framework (<code>jephy-mvc/bootstrap.php</code>)</li>
+	<li>Request Creation</li>
+	<li>Routing</li>
+	<li>Middleware Pipeline & Controller Execution</li>
+	<li>Controller Method Execution</li>
+</ul>
+
+<h2>Life Cycle Events & Hooks</h2>
+<p>JephyPHP Framework Documentation provides hooks to tap into the request life cycle:</p>
+
+<pre>
+php
+
+// jephy-mvc/app/hooks/LifecycleHooks.php
+namespace App\Hooks;
+
+class LifecycleHooks {
+    
+    // Before any request is processed
+    public function beforeRequest($request) {
+        // Log request start time
+        $request->startTime = microtime(true);
+    }
+    
+    // After route is matched but before middleware
+    public function onRouteMatched($route, $params) {
+        error_log("Route matched: {$route} with params " . json_encode($params));
+    }
+    
+    // Before controller execution
+    public function beforeController($controller, $method) {
+        error_log("Executing {$controller}@{$method}");
+    }
+    
+    // After controller execution, before response sent
+    public function afterController($response) {
+        // Add custom headers or modify response
+        header('X-Powered-By: Jephy-MVC');
+        return $response;
+    }
+    
+    // After response sent
+    public function onResponseSent() {
+        // Log request completion
+        $executionTime = microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'];
+        error_log("Request completed in {$executionTime} seconds");
+    }
+}
+
+
+</pre>
+
+
+<h2>Visual Timeline of Request Life Cycle</h2>
+<pre>
+
+Time ──────────────────────────────────────────────────────────────────►
+
+[0ms]    Client sends HTTP request
+          │
+[1ms]    public/index.php (Entry point)
+          │
+[2ms]    Load config.conf & vendor autoload
+          │
+[5ms]    Bootstrap framework & container
+          │
+[8ms]    Create Request object
+          │
+[10ms]   Router matches URL to controller
+          │
+[12ms]   Middleware pipeline starts
+          │  ├─ Global middleware (CORS, CSRF, etc.)
+[15ms]   │  ├─ Route middleware (Auth, RateLimit, etc.)
+          │  └─
+[20ms]   Controller instantiated (DI applied)
+          │
+[25ms]   Controller method executes
+          │  ├─ Model query (30-50ms if database)
+[60ms]   │  ├─ Business logic
+[70ms]   │  └─ View rendering with Smarty
+[85ms]   │
+[90ms]   Response object created
+          │
+[95ms]   Middleware pipeline (after phase)
+          │
+[100ms]  Response sent to client
+          │
+[101ms]  Life cycle complete
+
+</pre>
+
+<h2>Debugging the Life Cycle</h2>
+<p>Enable debug logging to trace the request life cycle:</p>
+
+<pre>
+
+// jephy-mvc/config.conf
+[app]
+site.debug = true
+
+// In bootstrap.php
+if (Config::get('app.debug')) {
+    $hooks = new \App\Hooks\DebugHooks();
+    $hooks->enableProfiling();
+}
+
+</pre>
+
+<pre>
+
+php
+
+// Debug hook implementation
+class DebugHooks {
+    private $timeline = [];
+    
+    public function enableProfiling() {
+        $this->timeline['start'] = microtime(true);
+        
+        // Register hooks
+        App\Core\Hook::register('before_request', [$this, 'logBefore']);
+        App\Core\Hook::register('after_controller', [$this, 'logAfter']);
+        App\Core\Hook::register('response_sent', [$this, 'logSummary']);
+    }
+    
+    public function logBefore() {
+        $this->timeline['before_request'] = microtime(true);
+    }
+    
+    public function logAfter() {
+        $this->timeline['after_controller'] = microtime(true);
+    }
+    
+    public function logSummary() {
+        $timings = [];
+        $prev = $this->timeline['start'];
+        
+        foreach ($this->timeline as $stage => $time) {
+            if ($stage !== 'start') {
+                $timings[$stage] = round(($time - $prev) * 1000, 2) . 'ms';
+                $prev = $time;
+            }
+        }
+        
+        echo "<!-- Life Cycle Timings: " . json_encode($timings) . " -->";
+    }
+}
+</pre>
+
+<h2>Summary</h2>
+
+<table class="table table-config-info">
+
+</table>
+
+	
+</div>
+
+
+						</div>					
+					</div>
+					
+					
+					
+					
+					<div class="track-column right">
+						<div>
+							<h3>ON THIS PAGE</h3>
+							<ul id="right-column-ul">
+								<!--
+									<li>
+										<a class="active">Meet Jephy MVC</a>
+									</li>
+									<li>
+										<a>Installing Jephy MVC</a>
+									</li>
+									<li>
+										<a>System Requirements</a>
+									</li>
+								-->								
+							</ul>
+						</div>
+						
+						
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+<script>
+const header = document.querySelectorAll( "header" )[0];
+header.classList.remove( "fixed-header" );
+window.addEventListener( "scroll", () => {
+	if( window.scrollY > 210 ){
+		header.classList.add( "fixed-header" );
+	}else{
+		header.classList.remove( "fixed-header" );
+	}
+} );
+</script>
+
+<script>
+const rightColumnUl = document.querySelector( "#right-column-ul" );
+const centerColumn = document.querySelector( "#center-column" );
+
+[...centerColumn.querySelectorAll( "h2, h3" )].forEach( ( it ) => {
+	const a = document.createElement( 'a' );
+	const li = document.createElement( 'li' );
+	a.textContent = it.textContent.replace( "<span class=\"sub-heading\">#</span>", "" ); 
+	li.appendChild( a );
+	rightColumnUl.appendChild( li );
+} );
+rightColumnUl.querySelectorAll( "li > a" )[0].classList.add( "active" );
+
+
+const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
+[...asideHeading].forEach( ( it ) => {
+	it.style.cursor = "pointer";
+	it.addEventListener( "click", ( evt ) => {
+		location.href = "/docs/" + it.getAttribute( "data-target" );
+	} );
+} );
+
+</script>
+
+</body>
+</html>

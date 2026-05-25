@@ -1,0 +1,45 @@
+src/
+├── jephy-mvc/                     # Main documentation content
+│   ├── config.conf
+│   ├── index.php
+│   ├── app/
+│   │   ├── cache/
+│   │   ├── classes/
+│   │   ├── controllers/
+│   │   ├── entities/
+│   │   ├── hooks/
+│   │   ├── image/
+│   │   ├── model/
+│   │   ├── traits/
+│   │   └── views/
+│   ├── config/
+│   │   ├── config.php
+│   │   ├── database.php
+│   │   ├── index.php
+│   │   └── mail.php
+│   ├── core/
+│   │   ├── ...
+│   │   ├── Controller.php
+│   │   ├── Framework.php
+│   │   ├── Router.php
+│   │   └── ...
+│   └── views/
+│       ├── events.md
+│       ├── middleware.md
+│       └── testing.md
+│
+├── public/
+│   ├── assets/        		# Sidebar navigation structure
+│   ├── static-files/       # Sidebar navigation structure
+│   ├── .htaccess        	# Sidebar navigation structure
+│   ├── favicon.ico         # Version management
+│   ├── index.php          	# Version management
+│   ├── open-graph.jpg      # Version management
+│   ├── access.log          # Version management
+│   └── error.log     		# Generated search index (during build)
+│
+├── vendor/
+│   └── ...
+│                    
+├── composer.json
+└── composer.lock

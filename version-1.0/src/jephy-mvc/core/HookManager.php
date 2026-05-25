@@ -81,7 +81,7 @@ class HookManager
     /**
      * Execute hooks and collect their return values
      */
-    public function execWithReturn($hookName, $params = [])
+    public function execWithReturnAlt($hookName, $params = [])
     {
         $results = [];
         
@@ -100,9 +100,55 @@ class HookManager
         
         return $results;
     }
-    
+	
+	public function execWithReturn($hook, $params = [])
+	{
+		if (!isset($this->hooks[$hook])) {
+			return [];
+		}
+		
+		$results = [];
+		
+		foreach ($this->hooks[$hook] as $hookData) {
+			$callback = $hookData['callback'];
+			
+			if (is_callable($callback)) {
+				try {
+					// For methods expecting single params array
+					$result = call_user_func_array($callback, [$params]);
+					
+					// For backward compatibility, also try with multiple params
+					if ($result === null && !is_array($params)) {
+						$result = call_user_func_array($callback, $params);
+					}
+					
+					if ($result !== null) {
+						$results[] = $result;
+					}
+					
+				} catch (\ArgumentCountError $e) {
+					// Try without parameters
+					try {
+						$result = call_user_func($callback);
+						if ($result !== null) {
+							$results[] = $result;
+						}
+					} catch (\Exception $e2) {
+						error_log("Hook execution error: " . $e2->getMessage());
+					}
+				} catch (\Exception $e) {
+					error_log("Hook execution error: " . $e->getMessage());
+				}
+			}
+		}
+		
+		return $results;
+	}
+		
     public function hasHooks($hookName)
     {
         return isset($this->hooks[$hookName]) && !empty($this->hooks[$hookName]);
     }
+	
+	
 }

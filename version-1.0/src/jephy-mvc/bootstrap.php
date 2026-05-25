@@ -7,7 +7,23 @@ if ( file_exists( $autoloadPath ) ) {
     require_once $autoloadPath;    
 }
 
-use App\Core\Framework;
+use App\Core\{ Framework, Event, EventServiceProvider, Config};
+
+
+// Register event service provider
+$eventProvider = new EventServiceProvider();
+$eventProvider->register();
+
+// Enable queue for performance (optional)
+if ( Config::getInstance()->get( 'site.APP_ENV' ) === 'production' ) {
+    Event::enableQueue();
+}
+
+// Register shutdown function to flush event queue
+register_shutdown_function(function() {
+    Event::flushQueue();
+});
+
 
 /**
  * Helper function to render a view with organized data structure

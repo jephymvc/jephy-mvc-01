@@ -1,0 +1,44 @@
+<h1>Setup</h1>
+<p>Install the project.</p>
+
+<pre>
+<button class="copy-btn">Copy</button>
+<code>git clone repo</code>
+</pre>
+
+<!--
+<div>
+	<h2>Install Dependencies</h2>
+	<p>Run npm install.</p>
+</div>
+-->
+
+<div>
+	<h2>System Requirements</h2>
+	<ul class="doc-list">
+		<li>PHP 7.4 or higher</li>
+		<li>MySQL 5.7 or higher (or MariaDB)</li>
+		<li>Apache/Nginx web server</li>
+		<li>Composer (for Smarty installation)</li>
+	</ul>
+</div>
+
+<div class="my-2">
+	<h2>Step 1: Project Structure</h2>
+	<p>Jephy works seamlessly with Postgres and MySQL/MariaDB.</p>
+</div>
+
+
+<script>
+
+// COPY
+function setupCopy(){
+  document.querySelectorAll(".copy-btn").forEach(btn=>{
+    btn.onclick=()=>{
+      navigator.clipboard.writeText(btn.nextElementSibling.innerText);
+      btn.innerText="Copied!";
+      setTimeout(()=>btn.innerText="Copy",1500);
+    };
+  });
+}
+</script>

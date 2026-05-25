@@ -225,9 +225,15 @@ class Router
         
         foreach ($params as $key => $value) {
             $path = str_replace("{{$key}}", $value, $path);
+            $path = str_replace("{{$key}?}", $value, $path);
         }
         
-        return $path;
+        // Remove any remaining optional parameters that weren't provided
+        $path = preg_replace('/\{[^}]+\?\}/', '', $path);
+        $path = preg_replace('#//+#', '/', $path);
+        $path = rtrim($path, '/');
+        
+        return $path === '' ? '/' : $path;
     }
     
     /**
@@ -282,7 +288,7 @@ class Router
         if (is_array($handler) && count($handler) === 2 && is_object($handler[0])) {
             return [
                 'type' => 'callable_array',
-                'controller' => $handler[0],
+                'controller' => get_class($handler[0]),
                 'action' => $handler[1],
                 'isStatic' => false
             ];
@@ -331,17 +337,52 @@ class Router
     }
     
     /**
+     * Compile route path to regex pattern
+     */
+    private function compilePattern($path)
+    {
+        $paramNames = [];
+        
+        // Handle optional parameters {param?}
+        $regex = preg_replace_callback(
+            '/\{([a-zA-Z_][a-zA-Z0-9_-]*)\?\}/',
+            function($matches) use (&$paramNames) {
+                $paramNames[] = $matches[1];
+                return '(?:/([^/]+))?';
+            },
+            $path
+        );
+        
+        // Handle required parameters {param}
+        $regex = preg_replace_callback(
+            '/\{([a-zA-Z_][a-zA-Z0-9_-]*)\}/',
+            function($matches) use (&$paramNames) {
+                $paramNames[] = $matches[1];
+                return '/([^/]+)';
+            },
+            $regex
+        );
+        
+        // Escape forward slashes and create regex
+        $regex = str_replace('/', '\/', $regex);
+        
+        return [
+            'regex' => '#^' . $regex . '$#',
+            'paramNames' => $paramNames
+        ];
+    }
+    
+    /**
      * Route the request to the appropriate handler
      */
     public function route($uri, $method)
     {
-        // Parse the URI to remove query string
-        $uri = parse_url($uri, PHP_URL_PATH);
+        // Normalize URI
+        $uri = rtrim(parse_url($uri, PHP_URL_PATH), '/');
+        if (empty($uri)) {
+            $uri = '/';
+        }
         
-        // Normalize the URI
-        $uri = $this->normalizeUri($uri);
-        
-        // Get query parameters
         $query = [];
         parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY) ?? '', $query);
         
@@ -350,8 +391,9 @@ class Router
                 continue;
             }
             
-            // Special case for root path
-            if ($route['path'] === '/' && $uri === '/') {
+            // Exact match
+            if ($route['path'] === $uri) {
+                // Execute before route hook
                 $this->hooks->exec('beforeRoute', [
                     'route' => $route,
                     'uri' => $uri,
@@ -359,61 +401,68 @@ class Router
                 ]);
                 
                 return [
+                    'type' => $route['handlerType'],
                     'handler' => $route['handler'],
-                    'handlerType' => $route['handlerType'],
+                    'params' => [],
+                    'query' => $query,
                     'controller' => $route['controller'] ?? null,
                     'action' => $route['action'] ?? null,
-                    'isStatic' => $route['isStatic'] ?? false,
-                    'params' => [],
-                    'query' => $query
+                    'isStatic' => $route['isStatic'] ?? false
                 ];
             }
             
+            // Parameter match using the stored pattern
             if (preg_match($route['pattern'], $uri, $matches)) {
-                // Remove full match
                 array_shift($matches);
                 
-                // Create named parameters array
+                // Extract named parameters
                 $params = [];
                 foreach ($route['paramNames'] as $index => $name) {
-                    if (isset($matches[$index])) {
+                    if (isset($matches[$index]) && $matches[$index] !== '') {
                         $params[$name] = $matches[$index];
                     }
                 }
                 
-                // Merge with query parameters
-                $params = array_merge($params, $query);
-                
+                // Execute before route hook
                 $this->hooks->exec('beforeRoute', [
                     'route' => $route,
                     'uri' => $uri,
-                    'method' => $method
+                    'method' => $method,
+                    'params' => $params
                 ]);
                 
                 return [
+                    'type' => $route['handlerType'],
                     'handler' => $route['handler'],
-                    'handlerType' => $route['handlerType'],
+                    'params' => $params,
+                    'query' => $query,
                     'controller' => $route['controller'] ?? null,
                     'action' => $route['action'] ?? null,
-                    'isStatic' => $route['isStatic'] ?? false,
-                    'params' => $params,
-                    'query' => $query
+                    'isStatic' => $route['isStatic'] ?? false
                 ];
             }
         }
         
-        // No route found - return 404 handler
+        // No route found - return 404 info
+        $this->hooks->exec('routeNotFound', [
+            'uri' => $uri,
+            'method' => $method
+        ]);
+        
         return [
-            'handler' => 'ErrorController@index',
-            'handlerType' => 'instance_method',
-            'controller' => 'ErrorController',
-            'action' => 'index',
-            'isStatic' => false,
+            'type' => 'not_found',
+            'handler' => null,
             'params' => ['uri' => $uri, 'method' => $method],
-            'query' => $query
+            'query' => $query,
+            'controller' => null,
+            'action' => null,
+            'isStatic' => false
         ];
     }
     
+    /**
+     * Normalize URI (remove trailing slash)
+     */
     private function normalizeUri($uri)
     {
         $uri = rtrim($uri, '/');
@@ -421,27 +470,6 @@ class Router
             $uri = '/';
         }
         return $uri;
-    }
-    
-    private function compilePattern($path)
-    {
-        $paramNames = [];
-        
-        $regex = preg_replace_callback(
-            '/\{([a-zA-Z_][a-zA-Z0-9_-]*)\}/',
-            function($matches) use (&$paramNames) {
-                $paramNames[] = $matches[1];
-                return '([^/]+)';
-            },
-            $path
-        );
-        
-        $regex = str_replace('/', '\/', $regex);
-        
-        return [
-            'regex' => '#^' . $regex . '$#',
-            'paramNames' => $paramNames
-        ];
     }
     
     /**
@@ -466,15 +494,49 @@ class Router
     public function addRoutes(array $routes)
     {
         foreach ($routes as $route) {
-            $this->addRoute(
-                $route['method'] ?? 'GET',
-                $route['path'] ?? '/',
-                $route['handler'] ?? $route['controllerAction'] ?? 'HomeController@index'
-            );
+            $method = $route['method'] ?? 'GET';
+            $path = $route['path'] ?? '/';
+            $handler = $route['handler'] ?? $route['controllerAction'] ?? 'HomeController@index';
+            $this->addRoute($method, $path, $handler);
         }
     }
+    
+    /**
+     * Check if a route exists
+     */
+    public function hasRoute($path, $method = 'GET')
+    {
+        $method = strtoupper($method);
+        $path = rtrim($path, '/');
+        
+        foreach ($this->routes as $route) {
+            if ($route['method'] === $method && $route['path'] === $path) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Get route by name
+     */
+    public function getNamedRoute($name)
+    {
+        return $this->namedRoutes[$name] ?? null;
+    }
+	
+	// In production, cache routes for performance
+	public function cache() {
+		$routes = serialize( $this->routes );
+		$cacheStoragePath = Config::getInstance()->get( "site.app_path", "" ) . "/cache/routes.php";
+		if( !file_exists( $cacheStoragePath ) ){
+			$fh = fopen( $cacheStoragePath, "+w" );
+		}
+		file_put_contents(FRAMEWORK_PATH . '/storage/cache/routes.php', '<?php return ' . var_export($routes, true) . ';');
+	}
+	
 }
-
 
 #	// In your routes.php file or bootstrap
 #	use App\Core\Router;

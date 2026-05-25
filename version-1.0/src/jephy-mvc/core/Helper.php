@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Core\View;
 use App\Core\Framework;
+use App\Hooks\GlobalDataHook;
 
 class Helper
 {
@@ -18,20 +19,88 @@ class Helper
 }
 
 // Global helper functions
+#	if (!function_exists('view')) {
+#	    /**
+#	     * Create a new view instance
+#	     */
+#	    function view($template = null, $data = [])
+#	    {
+#	        $view = new View();
+#	        
+#	        if ($template !== null) {
+#	            $view->setMultiple($data);
+#	            return $view->render($template);
+#	        }
+#	        
+#	        return $view;
+#	    }
+#	}
+
+
 if (!function_exists('view')) {
     /**
-     * Create a new view instance
+     * Render a Smarty view and return the content
+     * Automatically injects global data from GlobalDataHook
+     * 
+     * @param string $template Template path (e.g., 'home/index.tpl')
+     * @param array $data Additional data to assign to template
+     * @return string Rendered content
      */
-    function view($template = null, $data = [])
+    function view($template, $data = [])
     {
-        $view = new View();
+        $smarty = Framework::getSmarty();
         
-        if ($template !== null) {
-            $view->setMultiple($data);
-            return $view->render($template);
+        if ($smarty === null) {
+            error_log("Smarty not available in view() function");
+            return "Error: Template engine not available";
         }
         
-        return $view;
+        // === AUTOMATICALLY INJECT GLOBAL DATA ===
+        try {
+            $globalDataHook = GlobalDataHook::getInstance();
+            $globalDataHook->initialize();
+            $globalDataHook->forceInjectToSmarty();
+        } catch (\Exception $e) {
+            error_log("Failed to inject global data in view(): " . $e->getMessage());
+        }
+        
+        // Assign additional data from view() call (overrides global data if keys conflict)
+        foreach ($data as $key => $value) {
+            $smarty->assign($key, $value);
+        }
+        
+        // Get the rendered content
+        try {
+            $content = $smarty->fetch($template);
+            return $content;
+        } catch (Exception $e) {
+            error_log("Template error: " . $e->getMessage());
+            return "Error rendering template: " . $e->getMessage();
+        }
+    }
+}
+
+if (!function_exists('render')) {
+    /**
+     * Render and display a Smarty view
+     * 
+     * @param string $template Template path
+     * @param array $data Additional data to assign
+     */
+    function render($template, $data = [])
+    {
+        echo view($template, $data);
+    }
+}
+
+
+if (!function_exists('dd')) {
+    function dd($var)
+    {
+        echo '<pre>';
+        var_dump($var);
+        echo '</pre>';
+        die();
     }
 }
 
@@ -112,16 +181,7 @@ if (!function_exists('dump')) {
     }
 }
 
-if (!function_exists('dd')) {
-    /**
-     * Dump and die
-     */
-    function dd($var)
-    {
-        dump($var);
-        die();
-    }
-}
+
 
 if (!function_exists('redirect')) {
     /**

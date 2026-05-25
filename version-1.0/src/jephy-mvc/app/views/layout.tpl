@@ -100,9 +100,103 @@ ul.custom-list-image > li::before {
 	color: #ffffff !important;
 }
 
+
+.home-slide-cta-btns > a > span{
+	font-size: 14px;
+}
+
 .bold-900{
 	font-weight: 900;
 }
+
+.home-slide-content{
+	display: flex; 
+	align-items: flex-end; 
+	flex-direction: column; 
+	width: 100%; 
+	height: 490px;
+}
+
+.box-shadow{
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 7px 21px rgba(0, 0, 0, 0.06);
+}
+
+.dark-bg-hero{
+	background-color: #171717;
+	padding: 49px 0;
+}
+
+@media (max-width: 768px) {
+
+	#home-slide{
+		min-height: 100vh;
+		padding-top: 2rem;
+	}
+	
+	.nav-bar {
+        padding: 0px 0 !important;
+    }
+
+	.nav-bar-logo {
+		width: 120px;
+		padding: 10px 0;
+	}
+	
+	.home-slide-cta-btns > a {
+		display: block;
+		background-color: #fff;
+		padding: 10px 14px;
+		text-decoration: none;
+		border-radius: 28px;
+		font-weight: bold;
+		color: #444;
+		font-size: 14px;
+	}
+	
+	#footer-cta{
+		padding-bottom: 3rem;
+	}
+	
+	.home-slide-content{
+		display: flex; 
+		align-items: flex-start; 
+		justify-content: flex-start; 
+		flex-direction: column; 
+		width: 100%; 
+		min-height: 70vh !important;
+		
+	}
+	
+	.home-slide-main-heading{
+		font-size: 2.5rem !important;
+	}
+	
+	.section-heading{
+		font-size: 2.5rem !important;
+		margin-bottom: 1rem;
+	}
+	
+	.home-slide-sub-heading{
+		line-height: 28px;
+	}
+
+	.home-slide-cta-btns{
+		display: block !important;
+		margin-bottom: 1rem !important;
+	}
+
+	.home-slide-cta-btns > a{
+		margin-bottom: 2rem;
+		text-align: center !important; 
+	}
+
+	.service-column {
+		min-height: 280px !important; 	
+	}
+	
+}
+
+
 
 </style>
 
@@ -114,16 +208,95 @@ ul.custom-list-image > li::before {
 
 
 {block name="header"}
-	{*include file="partials/header.tpl"*}
+	{include file="partials/header.tpl"}
 {/block}
 
 {block name="home"}
+
+<section class="dark-bg-hero">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				<div>
+					<div class="tag-label centered-texts white-texts mt-5">
+						<small>
+							<img src="/assets/icons/sparkles-whine.svg" />
+							v1.0 - Just released
+						</small>
+					</div>
+					
+					<div class="mt-4">
+						<h1 class="centered-texts white-texts">
+							The PHP Framework for <span class="theme-texts">Artisans</span> & Builders 
+						</h1>
+					</div>
+					
+					<div class="mt-4">
+						<h6 class="centered-texts grey-texts">
+							Elegant, expressive and powerful - build mordern web applications with confidence.
+						</h6>
+					</div>
+					
+					
+					<div class="mt-4">
+						<ul class="flex-row dark-hero-cta justify-content-center">
+							<li>
+								<a class="theme-bg">
+									<img src="/assets/icons/book-open-white.svg" />
+									Read the Doc
+								</a>
+							</li>
+							<li>
+								<a>
+									<img src="/assets/icons/github-white.svg" />
+									View on Github
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					
+					
+					
+					<div class="my-5">
+						<ul class="flex-row dark-hero-cta justify-content-center">
+							<li>
+								<a class="grey-texts">
+									<img src="/assets/icons/star-white.svg" />
+									24.8k stars
+								</a>
+							</li>
+							<li>
+								<a class="grey-texts">
+									<img src="/assets/icons/download-white.svg" />
+									1k Downloads
+								</a>
+							</li>
+							<li>
+								<a class="grey-texts">
+									<img src="/assets/icons/git-fork-white.svg" />
+									3.6k Forks
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{*
 <section id="home-slide">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-md-6">
-				<div style="display: flex; align-items: flex-end; flex-direction: column; width: 100%; height: 490px; ">
-					<div style="border: 0px solid #f00; margin: auto 0px;">					
+				<div class="home-slide-content">
+					<div style="border: 0px solid #f00;">					
 						
 						<div>
 						
@@ -148,8 +321,7 @@ ul.custom-list-image > li::before {
 							
 							<h3 class="home-slide-sub-heading">
 								The modern PHP framework that provides elegant syntax, 
-								robust tools, and a delightful developer experience.
-								
+								robust tools, and a delightful developer experience.								
 								Get started in minutes.
 							</h3>
 							
@@ -158,10 +330,10 @@ ul.custom-list-image > li::before {
 						<div class="home-slide-cta-btns">
 							<a class="blue-bg" target="_blank" href="{$site.url.third_party_platform.github}">
 								<img src="/assets/icons/download-white.svg" style="width: 21px;" />
-								Download ZIP
+								<span>Download ZIP</span>
 							</a>
 							<a href="/documentation">
-								Read Documentation
+								<span>Read Documentation</span>
 								<img src="/assets/icons/arrow-right.svg" style="width: 21px;" />
 							</a>							
 						</div>
@@ -172,7 +344,7 @@ ul.custom-list-image > li::before {
 			</div>
 			
 			<div class="col-md-6">
-				<div class="py-5">
+				<div class="py-5 box-shadow">
 					<img src="/assets/images/code-sample.jpg" class="w-100 border-radius-3" />
 				</div>
 			</div>
@@ -180,7 +352,7 @@ ul.custom-list-image > li::before {
 		</div>
 	</div>
 </section>
-
+*}
 {/block}
 
 {block name="services"}
@@ -190,8 +362,7 @@ ul.custom-list-image > li::before {
 			<div class="col-md-9">
 			
 				<div class="sectional-headings centered py-5">
-					{*<h6 class="sectional-title-tag">OUR SERVICES</h6>*}
-					<h3>
+					<h3 class="section-heading">
 						Everything you need to build robust applications
 					</h3>
 					<p>
@@ -281,7 +452,7 @@ ul.custom-list-image > li::before {
 					<p>
 						An intuitive, developer-friendly database mapper that simplifies 
 						complex queries into readable code, boosting productivity through 
-						various refined and expressive syntax. It also supports GraphQL.
+						various refined, expressive syntax and GraphQL support.
 					</p>
 					
 					{*
@@ -308,9 +479,9 @@ ul.custom-list-image > li::before {
 					</div>
 					
 					<p>
-						This flexible framework operates seamlessly across any server 
-						environment, ensuring consistent performance whether deployed on-premise, 
-						via Docker, or any cloud.
+						It's flexible and operates seamlessly across any server 
+						environment, ensuring consistent performance whether 
+						deployed on-premise, Docker, or any cloud platform.
 					</p>					
 					
 					{*
@@ -333,7 +504,7 @@ ul.custom-list-image > li::before {
 {/block}
 
 {block name="maincta"}
-<section class="main-cta">
+<section id="footer-cta" class="main-cta">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-12">
@@ -349,25 +520,25 @@ ul.custom-list-image > li::before {
 								</span>
 							</div>
 							
-							<h2 class="home-slide-main-heading">
+							<h3 class="home-slide-main-heading">
 								Ready to start building?
-							</h2>
+							</h3>
 							
-							<h3 class="home-slide-sub-heading">
+							<p class="home-slide-sub-heading">
 								Download the latest release package. It includes 
 								everything you need to get your project up and running quickly.
-							</h3>
+							</p>
 							
 						</div>
 						
 						
 						<div class="home-slide-cta-btns">
 							<a class="blue-bg" target="_blank" href="{$site.url.third_party_platform.github}">
-								<img src="/assets/icons/download-white.svg" style="width: 21px;" />
-								Download ZIP
+								<img src="/assets/icons/rocket-launch-white.svg" style="width: 21px;" />
+								<span>Get Started</span>
 							</a>
 							<a href="/documentation">
-								Read Documentation
+								<span>Read Documentation</span>
 								<img src="/assets/icons/arrow-right.svg" style="width: 21px;" />
 							</a>							
 						</div>
@@ -465,13 +636,15 @@ ul.custom-list-image > li::before {
 <script>
 
 const header = document.querySelectorAll( "header" )[0];
-window.addEventListener( "scroll", () => {
-	if( window.scrollY > 210 ){
-		header.classList.add( "fixed" );
-	}else{
-		header.classList.remove( "fixed" );
-	}
-} );
+if( document.body.contains( header ) ){
+	window.addEventListener( "scroll", () => {
+		if( window.scrollY > 210 ){
+			header.classList.add( "fixed" );
+		}else{
+			header.classList.remove( "fixed" );
+		}
+	} );
+}
 
 Utils.easeScrolls( ".ease-scroll", "data-target" );
 
@@ -482,34 +655,41 @@ const ctaColumn 		= document.querySelectorAll( ".cta-column" )[0];
 const dropdownBtns 		= document.querySelectorAll( "li.dropdown" );
 
 
-harmbugger.addEventListener( "click", ( evt ) => {
-	evt.preventDefault();
-	
-	if( !navBarCenterMenu.classList.contains( "show" ) ){
-		navBarCenterMenu.classList.add( "show" );
-	}else{
-		navBarCenterMenu.classList.remove( "show" );
-	}
-		
-	if( !ctaColumn.classList.contains( "show" ) ){
-		ctaColumn.classList.add( "show" );
-	}else{
-		ctaColumn.classList.remove( "show" );
-	}	
-	
-} );
 
-[...dropdownBtns].forEach( ( btn ) => {
-	btn.addEventListener( "click", ( evt ) => {
+if( document.body.contains( harmbugger ) ){
+	harmbugger.addEventListener( "click", ( evt ) => {
 		evt.preventDefault();
-		const dropmenu = btn.querySelectorAll( 'ul' )[0];
-		if( dropmenu.classList.contains( 'dropmenu' ) ){
-			dropmenu.classList.remove( 'show' );
+		
+		if( !navBarCenterMenu.classList.contains( "show" ) ){
+			navBarCenterMenu.classList.add( "show" );
 		}else{
-			dropmenu.classList.add( 'show' );
+			navBarCenterMenu.classList.remove( "show" );
 		}
+			
+		if( !ctaColumn.classList.contains( "show" ) ){
+			ctaColumn.classList.add( "show" );
+		}else{
+			ctaColumn.classList.remove( "show" );
+		}	
+		
 	} );
-} );
+}
+
+
+if( document.body.contains( dropdownBtns[0] ) ){
+	[...dropdownBtns].forEach( ( btn ) => {
+		btn.addEventListener( "click", ( evt ) => {
+			evt.preventDefault();
+			const dropmenu = btn.querySelectorAll( 'ul' )[0];
+			if( dropmenu.classList.contains( 'dropmenu' ) ){
+				dropmenu.classList.remove( 'show' );
+			}else{
+				dropmenu.classList.add( 'show' );
+			}
+		} );
+	} );
+}
+
 		
 </script>
 

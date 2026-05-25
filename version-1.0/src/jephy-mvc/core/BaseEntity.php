@@ -8,6 +8,12 @@ class BaseEntity
     protected static $db;
     protected $attributes 	= [];
     protected $original 	= [];
+	
+	// Relationship cache to avoid multiple queries
+    protected $relations 			= [];    
+    // Define relationships in child classes
+    protected $with 				= []; // Eager loading
+    protected $relationDefinitions 	= [];
     
     public function __construct(array $attributes = [])
     {
@@ -25,9 +31,187 @@ class BaseEntity
         }
         return self::$db;
     }
+	
+	  
+    // ==================== RELATIONSHIP METHODS ====================
     
+    /**
+     * Define One-to-One relationship
+     * 
+     * @param string $relatedClass The related entity class
+     * @param string $foreignKey Foreign key on related table (default: parent_id)
+     * @param string $localKey Local key on this table (default: id)
+     * @return mixed Related entity or null
+     */
+    public function hasOne($relatedClass, $foreignKey = null, $localKey = 'id')
+    {
+        $foreignKey = $foreignKey ?: $this->getForeignKey();
+        $localValue = $this->attributes[$localKey] ?? null;
+        
+        if ($localValue === null) {
+            return null;
+        }
+        
+        $cacheKey = "hasOne:{$relatedClass}:{$foreignKey}:{$localValue}";
+        
+        if (isset($this->relations[$cacheKey])) {
+            return $this->relations[$cacheKey];
+        }
+        
+        $result = $relatedClass::findFirst([
+            'where' => [$foreignKey => $localValue]
+        ]);
+        
+        $this->relations[$cacheKey] = $result;
+        return $result;
+    }
+    
+    /**
+     * Define One-to-Many relationship
+     * 
+     * @param string $relatedClass The related entity class
+     * @param string $foreignKey Foreign key on related table (default: parent_id)
+     * @param string $localKey Local key on this table (default: id)
+     * @return array Collection of related entities
+     */
+    public function hasMany($relatedClass, $foreignKey = null, $localKey = 'id')
+    {
+        $foreignKey = $foreignKey ?: $this->getForeignKey();
+        $localValue = $this->attributes[$localKey] ?? null;
+        
+        if ($localValue === null) {
+            return [];
+        }
+        
+        $cacheKey = "hasMany:{$relatedClass}:{$foreignKey}:{$localValue}";
+        
+        if (isset($this->relations[$cacheKey])) {
+            return $this->relations[$cacheKey];
+        }
+        
+        $results = $relatedClass::findMany([
+            'where' => [$foreignKey => $localValue],
+            'orderBy' => 'id ASC'
+        ]);
+        
+        $this->relations[$cacheKey] = $results;
+        return $results;
+    }
+    
+    /**
+     * Define Belongs-To relationship (inverse of hasOne/hasMany)
+     * 
+     * @param string $relatedClass The parent entity class
+     * @param string $foreignKey Foreign key on this table (default: parent_id)
+     * @param string $ownerKey Primary key on related table (default: id)
+     * @return mixed Related entity or null
+     */
+    public function belongsTo($relatedClass, $foreignKey = null, $ownerKey = 'id')
+    {
+        $foreignKey = $foreignKey ?: $this->getForeignKey(true);
+        $foreignValue = $this->attributes[$foreignKey] ?? null;
+        
+        if ($foreignValue === null) {
+            return null;
+        }
+        
+        $cacheKey = "belongsTo:{$relatedClass}:{$foreignKey}:{$foreignValue}";
+        
+        if (isset($this->relations[$cacheKey])) {
+            return $this->relations[$cacheKey];
+        }
+        
+        $result = $relatedClass::findFirst([
+            'where' => [$ownerKey => $foreignValue]
+        ]);
+        
+        $this->relations[$cacheKey] = $result;
+        return $result;
+    }
+    
+    /**
+     * Define Belongs-To-Many relationship
+     * 
+     * @param string $relatedClass The related entity class
+     * @param string $pivotTable Pivot table name
+     * @param string $foreignPivotKey Foreign key on pivot table for this model
+     * @param string $relatedPivotKey Foreign key on pivot table for related model
+     * @param string $localKey Local key on this table (default: id)
+     * @return array Collection of related entities
+     */
+    public function belongsToMany($relatedClass, $pivotTable, $foreignPivotKey = null, $relatedPivotKey = null, $localKey = 'id')
+    {
+        $foreignPivotKey = $foreignPivotKey ?: $this->getTableName() . '_id';
+        $relatedPivotKey = $relatedPivotKey ?: (new $relatedClass())->getTableName() . '_id';
+        $localValue = $this->attributes[$localKey] ?? null;
+        
+        if ($localValue === null) {
+            return [];
+        }
+        
+        $cacheKey = "belongsToMany:{$relatedClass}:{$pivotTable}:{$foreignPivotKey}:{$localValue}";
+        
+        if (isset($this->relations[$cacheKey])) {
+            return $this->relations[$cacheKey];
+        }
+        
+        // Get related IDs from pivot table
+        $pivotRecords = self::db()->select($pivotTable, "{$relatedPivotKey}", [
+            $foreignPivotKey => $localValue
+        ]);
+        
+        if (empty($pivotRecords)) {
+            return [];
+        }
+        
+        $relatedIds = array_column($pivotRecords, $relatedPivotKey);
+        
+        // Fetch related entities
+        $results = $relatedClass::findMany([
+            'where' => ['id' => $relatedIds]
+        ]);
+        
+        $this->relations[$cacheKey] = $results;
+        return $results;
+    }
+    
+    /**
+     * Load relationships eagerly
+     * 
+     * @param array|string $relations Relations to load
+     * @return $this
+     */
+    public function load($relations)
+    {
+        $relations = is_array($relations) ? $relations : func_get_args();
+        
+        foreach ($relations as $relation) {
+            if (method_exists($this, $relation)) {
+                $this->$relation();
+            }
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * Get relationship value (magic method for property-style access)
+     */
     public function __get($name)
     {
+        // Check if it's a relationship
+        if (method_exists($this, $name)) {
+            return $this->$name();
+        }
+        
+        // Check if it's a loaded relation
+        foreach ($this->relations as $key => $value) {
+            if (strpos($key, "{$name}:") === 0) {
+                return $value;
+            }
+        }
+        
+        // Otherwise return attribute
         return $this->attributes[$name] ?? null;
     }
     
@@ -84,94 +268,11 @@ class BaseEntity
         return false;
     }
     
-		
-    
-    public function saveAlt()
-    {
-        if (isset($this->attributes['id'])) {
-            // Update existing record
-            $id = $this->attributes['id'];
-            $updateData = $this->attributes;
-            unset($updateData['id']);
-            
-            $result = self::db()->update(
-                static::$table, 
-                $updateData, 
-                ['id' => $id]
-            );
-            
-            if ($result) {
-                $this->original = $this->attributes;
-            }
-            
-            return $result > 0;
-        } else {
-            // Insert new record
-            if (!isset($this->attributes['created_at'])) {
-                $this->attributes['created_at'] = date('Y-m-d H:i:s');
-            }
-            
-            $id = self::db()->insert(static::$table, $this->attributes);
-            
-            if ($id) {
-                $this->attributes['id'] = $id;
-                $this->original = $this->attributes;
-                return true;
-            }
-        }
-        
-        return false;
-    }
-    	
-    
-    public function saveAlt1()
-    {
-        if (isset($this->attributes['id'])) {
-            // Update existing record
-            $id = $this->attributes['id'];
-            $updateData = $this->attributes;
-            unset($updateData['id']);
-            
-            $result = self::db()->update(
-                static::$table, 
-                $updateData, 
-                ['id' => $id]
-            );
-            
-            if ($result) {
-                $this->original = $this->attributes;
-            }
-            
-            return $result > 0;
-        } else {
-            // Insert new record
-            if (!isset($this->attributes['created_at'])) {
-                $this->attributes['created_at'] = date('Y-m-d H:i:s');
-            }
-            
-            if (!isset($this->attributes['updated_at'])) {
-                $this->attributes['updated_at'] = date('Y-m-d H:i:s');
-            }
-            
-            $id = self::db()->insert(static::$table, $this->attributes);
-            
-            if ($id) {
-                $this->attributes['id'] = $id;
-                $this->original = $this->attributes;
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
-    
     public static function create(array $data)
     {
         $entity = new static($data);
         return $entity->save() ? $entity : null;
-    }
-      
+    }      
     
     /**
      * Process where conditions to handle LIKE operators
@@ -272,33 +373,6 @@ class BaseEntity
         }, $results);
     }
     
-	
-	    
-    public static function findManyAlt(array $params = [])
-    {
-        
-		// Extract parameters
-        $where 		= $params['where'] ?? [];
-        $whereNot 	= $params['whereNot'] ?? [];
-        $orderBy 	= $params['orderBy'] ?? '';
-        $limit 		= $params['take'] ?? $params['limit'] ?? null;
-        $offset 	= $params['skip'] ?? $params['offset'] ?? null;
-        
-        // Convert whereNot to where format with != operator
-        if (!empty($whereNot)) {
-            foreach ($whereNot as $field => $value) {
-                $where[$field] = ['operator' => '!=', 'value' => $value];
-            }
-        }
-        
-        $db = self::db();
-        $results = $db->select(static::$table, '*', $where, $orderBy, $limit, $offset);
-        
-        return array_map(function($item) {
-            return new static($item);
-        }, $results);
-    }
-	
     
     public static function findFirst(array $params = [])
     {
@@ -323,100 +397,117 @@ class BaseEntity
         }
         
         return null;
-    }
-    
+    }    
 	
-	
-	    
-    public static function findFirstAlt(array $params = [])
-    {
-        $where = $params['where'] ?? [];
-        $whereNot = $params['whereNot'] ?? [];
-        
-        // Convert whereNot to where format
-        if (!empty($whereNot)) {
-            foreach ($whereNot as $field => $value) {
-                $where[$field] = ['operator' => '!=', 'value' => $value];
-            }
-        }
-        
-        $db = self::db();
-        $results = $db->select(static::$table, '*', $where, '', 1);
-        
-        if (!empty($results)) {
-            return new static($results[0]);
-        }
-        
-        return null;
-    }
-    
     
     public static function all($orderBy = '')
     {
         return self::findMany([], $orderBy);
     }
-    
-    public static function where($conditions)
-    {
-        return new class($conditions, static::class) {
-            private $conditions;
-            private $entityClass;
-            
-            public function __construct($conditions, $entityClass)
-            {
-                $this->conditions = $conditions;
-                $this->entityClass = $entityClass;
-            }
-            
-            public function get($orderBy = '', $limit = null, $offset = null)
-            {
-                $db = $this->entityClass::db();
-                $results = $db->select($this->entityClass::$table, '*', $this->conditions, $orderBy, $limit, $offset);
-                
-                return array_map(function($item) {
-                    return new $this->entityClass($item);
-                }, $results);
-            }
-            
-            public function first()
-            {
-                $db = $this->entityClass::db();
-                $results = $db->select($this->entityClass::$table, '*', $this->conditions, '', 1);
-                
-                if (!empty($results)) {
-                    return new $this->entityClass($results[0]);
-                }
-                
-                return null;
-            }
-            
-            public function count()
-            {
-                $db = $this->entityClass::db();
-                return $db->count($this->entityClass::$table, $this->conditions);
-            }
-            
-            public function orderBy($orderBy)
-            {
-                $this->orderBy = $orderBy;
-                return $this;
-            }
-            
-            public function limit($limit)
-            {
-                $this->limit = $limit;
-                return $this;
-            }
-            
-            public function offset($offset)
-            {
-                $this->offset = $offset;
-                return $this;
-            }
-        };
-    }
+    	
 	
+	public static function where($conditions)
+	{
+		// Create callables that capture the protected members
+		$dbAccessor = function() {
+			return static::db();
+		};
 		
+		$tableAccessor = function() {
+			return static::$table;
+		};
+		
+		return new class($conditions, static::class, $dbAccessor, $tableAccessor) {
+			private $conditions;
+			private $entityClass;
+			private $dbAccessor;
+			private $tableAccessor;
+			private $orderBy = '';
+			private $limit = null;
+			private $offset = null;
+			
+			public function __construct($conditions, $entityClass, callable $dbAccessor, callable $tableAccessor)
+			{
+				$this->conditions = $conditions;
+				$this->entityClass = $entityClass;
+				$this->dbAccessor = $dbAccessor;
+				$this->tableAccessor = $tableAccessor;
+			}
+			
+			private function getDb()
+			{
+				return ($this->dbAccessor)();
+			}
+			
+			private function getTable()
+			{
+				return ($this->tableAccessor)();
+			}
+			
+			public function get($orderBy = '', $limit = null, $offset = null)
+			{
+				$db = $this->getDb();
+				$table = $this->getTable();
+				$results = $db->select(
+					$table, 
+					'*', 
+					$this->conditions, 
+					$orderBy, 
+					$limit, 
+					$offset
+				);
+				
+				return array_map(function($item) use ($table) {
+					return new $this->entityClass($item);
+				}, $results);
+			}
+			
+			public function first()
+			{
+				$db = $this->getDb();
+				$table = $this->getTable();
+				$results = $db->select(
+					$table, 
+					'*', 
+					$this->conditions, 
+					'', 
+					1
+				);
+				
+				if (!empty($results)) {
+					return new $this->entityClass($results[0]);
+				}
+				
+				return null;
+			}
+			
+			public function count()
+			{
+				$db = $this->getDb();
+				$table = $this->getTable();
+				return $db->count($table, $this->conditions);
+			}
+			
+			public function orderBy($orderBy)
+			{
+				$this->orderBy = $orderBy;
+				return $this;
+			}
+			
+			public function limit($limit)
+			{
+				$this->limit = $limit;
+				return $this;
+			}
+			
+			public function offset($offset)
+			{
+				$this->offset = $offset;
+				return $this;
+			}
+		};
+	}
+	
     public static function count(array $params = [])
     {
         $where = $params['where'] ?? [];
@@ -435,42 +526,13 @@ class BaseEntity
         $db = self::db();
         return $db->count(static::$table, $where);
     }
-    
-  
 	
-	public static function countAlt(array $params = [])
-    {
-        $where = $params['where'] ?? [];
-        $whereNot = $params['whereNot'] ?? [];
-        
-        // Convert whereNot to where format
-        if (!empty($whereNot)) {
-            foreach ($whereNot as $field => $value) {
-                $where[$field] = ['operator' => '!=', 'value' => $value];
-            }
-        }
-        
-        $db = self::db();
-        return $db->count(static::$table, $where);
-    }
-    
-    public static function countAlt1(array $conditions = [])
-    {
-        $db = self::db();
-        return $db->count(static::$table, $conditions);
-    }
 	
 	public static function exists(array $params = [])
     {
         return self::count($params) > 0;
     }
     
-    
-    public static function existsAlt(array $conditions = [])
-    {
-        $db = self::db();
-        return $db->exists(static::$table, $conditions);
-    }
     
     public function update(array $data)
     {

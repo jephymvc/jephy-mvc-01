@@ -1,4 +1,6 @@
 imagery/
+doc/
+doc-1/
 version-*/.env
 version-*/src/vendor/
 version-*/src/jephy-mvc/config.conf

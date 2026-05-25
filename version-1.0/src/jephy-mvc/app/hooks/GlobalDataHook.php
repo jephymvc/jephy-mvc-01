@@ -136,35 +136,66 @@ class GlobalDataHook
      * Inject template data before rendering
      * Now accepts a single array parameter
      */
-    public function injectTemplateData($params)
-    {
-        // $params should be an array with: ['template', 'data']
-        if ( !is_array( $params ) ) {
-            $params = [ $params ];
-        }
-        
-        try {
+	
+	public function injectTemplateData($params)
+	{
+		// Ensure data is initialized
+		$this->initialize();
+		
+		// Always inject data, even if params is not array
+		try {
+			$smarty = Framework::getSmarty();
 			
-            $smarty = Framework::getSmarty();            
-            if ($smarty === null) {
-                error_log("Smarty not available in injectTemplateData");
-                return $params;
-            }
-            
-            // Inject all global data into Smarty
-            $globalData = $this->getAllData();
-            
-            foreach ($globalData as $key => $value) {
-                $smarty->assign($key, $value);
-            }
-            
-        } catch (\Exception $e) {
-            error_log("Error injecting template data: " . $e->getMessage());
-        }
-        
-        return $params;
-    }
-    
+			if ($smarty === null) {
+				error_log("Smarty not available in injectTemplateData");
+				return $params;
+			}
+			
+			// Load user data (always refresh)
+			$this->loadUserData();
+			
+			// Load flash messages
+			$this->loadFlashMessages();
+			
+			// Inject all global data into Smarty
+			$globalData = $this->getAllData();
+			
+			foreach ($globalData as $key => $value) {
+				$smarty->assign($key, $value);
+			}
+			
+			// Also inject individual variables for easier access
+			if (isset($globalData['site'])) {
+				$smarty->assign('site', $globalData['site']);
+			}
+			
+			if (isset($globalData['app'])) {
+				$smarty->assign('app', $globalData['app']);
+			}
+			
+			if (isset($globalData['auth'])) {
+				$smarty->assign('auth', $globalData['auth']);
+			}
+			
+			if (isset($globalData['flash_messages'])) {
+				$smarty->assign('flash_messages', $globalData['flash_messages']);
+			}
+			
+		} catch (\Exception $e) {
+			error_log("Error injecting template data: " . $e->getMessage());
+		}
+		
+		return $params;
+	}
+
+	/**
+	 * Force inject data into Smarty (useful for error pages and direct view calls)
+	 */
+	public function forceInjectToSmarty()
+	{
+		$this->initialize();
+		$this->injectTemplateData([]);
+	}
     private function loadUserData()
     {
         if (isset($_SESSION['user_id'])) {

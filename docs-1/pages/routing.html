@@ -1,0 +1,75 @@
+<h1>Usage</h1>
+<p>Usage in Routes</p>
+<p></p>
+
+<pre>
+<button class="copy-btn">Copy</button>
+<code>
+&lt;?php
+
+# app/routes.php
+use App\Core\Router;
+
+// Simple routes with closure
+Router::get('/home', function() {
+    return view('home/index.tpl');
+});
+
+// Simple routes with controller
+Router::get('/', 'HomeController@index');
+Router::get('/about', 'AboutController@index');
+
+// Routes with parameters
+Router::get('/user/{id}', 'UserController@show');
+Router::get('/post/{slug}', 'PostController@show');
+
+// POST routes
+Router::post('/contact', 'ContactController@submit');
+Router::post('/login', 'AuthController@login');
+
+// PUT/DELETE routes
+Router::put('/user/{id}', 'UserController@update');
+Router::delete('/user/{id}', 'UserController@destroy');
+
+// API Resource routes
+Router::apiResource('users', 'UserController');
+Router::apiResource('posts', 'PostController');
+
+// Multiple resources
+Router::apiResources([
+    'products' => 'ProductController',
+    'orders' => 'OrderController'
+]);
+
+// Route groups with prefix
+Router::group('/admin', function() {
+    Router::get('/dashboard', 'AdminController@dashboard');
+    Router::get('/users', 'AdminController@users');
+    Router::post('/users/{id}', 'AdminController@updateUser');
+});
+
+// Named routes
+Router::named('user.profile', 'GET', '/users/{id}', 'UserController@profile');
+Router::named('user.edit', 'GET', '/users/{id}/edit', 'UserController@edit');
+
+// Redirect routes
+Router::redirect('/old-page', '/new-page', 301);
+
+// View routes (directly render Smarty templates)
+Router::view('/about', 'pages/about', ['title' => 'About Us']);
+Router::view('/contact', 'pages/contact', ['title' => 'Contact']);
+
+// Route with multiple methods
+Router::match(['GET', 'POST'], '/profile', 'ProfileController@handle');
+
+// Static method route
+Router::get('/api/stats', 'StatsController::getStats');
+
+?&gt;
+
+
+</code>
+</pre>
+
+<h2>Run App</h2>
+<p>Start your app locally.</p>

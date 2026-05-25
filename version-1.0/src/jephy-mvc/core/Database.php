@@ -37,11 +37,11 @@ class Database
 		try {
 			$config = Config::getInstance();
 			$driver = $config->get('database.driver') ?: 'mysql';
-			$host = $config->get('database.host') ?: 'localhost';
-			$dbname = $config->get('database.name') ?: 'jephy';
-			$username = $config->get('database.user') ?: 'root';
-			$password = $config->get('database.password') ?: '';
-			$port = $config->get('database.port') ?: 3306;
+			$host 	= $config->get('database.host') ?: 'localhost';
+			$dbname 	= $config->get('database.name') ?: 'jephy';
+			$username 	= $config->get('database.user') ?: 'root';
+			$password 	= $config->get('database.password') ?: '';
+			$port 		= $config->get('database.port') ?: 3306;
 			
 			// Build DSN based on driver
 			switch ($driver) {

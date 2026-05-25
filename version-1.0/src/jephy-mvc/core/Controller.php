@@ -1,5 +1,7 @@
 <?php
 namespace App\Core;
+use App\Core\Services\JwtService;
+use App\Core\Request;
 
 abstract class Controller
 {
@@ -7,6 +9,8 @@ abstract class Controller
     protected $hooks;
     protected $globalData;
     protected $appPath;
+	protected JwtService $jwtService;
+	protected Request $request;
     
     public function __construct()
     {
@@ -17,13 +21,15 @@ abstract class Controller
         $this->hooks 		= Framework::getHooks();
         $this->globalData 	= Framework::getGlobalDataHook();
         $this->appPath 		= Framework::getAppPathStatic();
-		
+        $this->jwtService 	= new JwtService();
+        $this->request 		= new Request(); // Initialize request
+        
         // Verify Smarty is available
         if ($this->smarty === null) {
             throw new \RuntimeException('Smarty not initialized. Check Framework initialization.');
         }
-		
-		$this->registerCustomSmartyFunctions();
+        
+        $this->registerCustomSmartyFunctions();
         
     }
     
@@ -97,47 +103,6 @@ abstract class Controller
     /**
      * Display template using Smarty's display() with hook support
      */
-    protected function displayAlt($template, $data = [])
-    {
-        foreach ($data as $key => $value) {
-            $this->smarty->assign($key, $value);
-        }
-        
-        // Execute beforeRender hook
-        $this->hooks->exec('beforeRender', [
-            'template' => $template,
-            'data' => $data
-        ]);
-        
-        // Start output buffering
-        ob_start();
-        
-        // Let Smarty output directly
-        $this->smarty->display($template);
-        
-        // Get the output
-        $output = ob_get_clean();
-        
-        // Execute afterRender hook
-        $hookResults = $this->hooks->exec('afterRender', [
-            'template' => $template,
-            'data' => $data,
-            'output' => $output
-        ]);
-        
-        // Get the last modified output from hooks
-        if (is_array($hookResults) && !empty($hookResults)) {
-            $lastResult = end($hookResults);
-            if (is_string($lastResult)) {
-                $output = $lastResult;
-            } elseif (is_array($lastResult) && isset($lastResult['output'])) {
-                $output = $lastResult['output'];
-            }
-        }
-        
-        echo $output;
-    }
-	
 	protected function display($template, $data = [])
 	{
 		// Execute beforeRender hook - pass template and data
@@ -189,7 +154,7 @@ abstract class Controller
     {		
         http_response_code($statusCode);
         header('Content-Type: application/json');
-        echo json_encode($data, JSON_PRETTY_PRINT);
+        echo json_encode( $data, JSON_PRETTY_PRINT );
         exit;
     }
     
@@ -224,8 +189,8 @@ abstract class Controller
     
     protected function validateWithRedirect($data, $rules, $redirectUrl)
     {
-        if (!class_exists('App\\Core\\Validator')) {
-            // Simple fallback - just return data
+        
+		if (!class_exists('App\\Core\\Validator')) {
             return $data;
         }
         
@@ -234,33 +199,34 @@ abstract class Controller
         
         if (!$validator->validate()) {
             // Store errors and old input in session
-            $_SESSION['validation_errors'] = $validator->errors();
-            $_SESSION['old_input'] = $data;
+            $_SESSION['validation_errors'] 	= $validator->errors();
+            $_SESSION['old_input'] 			= $data;
             
             // Add flash message
             if ($this->globalData && method_exists($this->globalData, 'addFlash')) {
-                $this->globalData->addFlash('error', 'Please fix the errors below.');
+                $this->globalData->addFlash( 'error', 'Please fix the errors below.' );
             }
             
             $this->redirect($redirectUrl);
         }
         
         return $validator->validated();
+		
     }
     
     protected function sanitizeInput($input, $rules = [])
     {
-        $sanitized = [];
         
+		$sanitized = [];        
         foreach ($input as $key => $value) {
             if (is_array($value)) {
                 $sanitized[$key] = $this->sanitizeArray($value);
             } else {
                 $sanitized[$key] = $this->sanitizeValue($value, $rules[$key] ?? '');
             }
-        }
-        
+        }        
         return $sanitized;
+		
     }
     
     private function sanitizeArray($array)
@@ -588,5 +554,70 @@ abstract class Controller
 		return !empty($_SESSION['user_session']) || isset($_SESSION['guest_user']);
 	}
 	
-}
+	
+	protected function getJWTAuthenticatedUser( $userIdKey = 'user_id' )
+	{
+		
+		$headers 	= getallheaders();
+		$authHeader = $headers['Authorization'] ?? '';
 
+		if ( empty( $authHeader ) || !preg_match( '/Bearer\s(\S+)/', $authHeader, $matches ) ) {
+			$this->json([ 'error' => 'Token not provided' ], 401 );
+			exit;
+		}
+
+		$token = $matches[1];
+		
+		try {
+			$payload = $this->jwtService->validateToken($token);
+			// Fetch and return the full User entity using the ID from the token
+			return isset( $payload[ $userIdKey ] ) ? User::find($payload['user_id']): null;
+		} catch (RuntimeException $e) {
+			$this->json(['error' => $e->getMessage()], 401);
+			exit;
+		}
+		
+	}
+	
+	/**
+     * Get validated input from request (POST, GET, or JSON)
+     */
+    protected function validateRequest($rules, $jsonResponse = true)
+    {
+        $data = $this->request->input();
+        
+        if (!class_exists('App\\Core\\Validator')) {
+            return $data;
+        }
+        
+        $validator = new Validator($data);
+        $validator->make($data, $rules);
+        
+        if (!$validator->validate()) {
+            if ($jsonResponse) {
+                $this->json([
+                    'success' => false,
+                    'errors' => $validator->errors()
+                ], 400);
+            }
+            return false;
+        }
+        
+        return $validator->validated();
+    }
+
+	// 	In a protected endpoint, like BlogController@store
+	//	public function store()
+	//	{
+	//		// Ensure the user is authenticated
+	//		$user = $this->getAuthenticatedUser();
+	//		
+	//		// Now you can use $user->id to associate the new blog post
+	//		$rules = ['title' => 'required|string', 'content' => 'required|string'];
+	//		$validatedData = $this->validate($_POST, $rules, true);
+	//		
+	//		$validatedData['user_id'] = $user->id;
+	//		// ... create the blog post with the associated user ID
+	//	}
+	
+}

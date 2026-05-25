@@ -5,19 +5,20 @@ use ReflectionClass;
 
 abstract class Entity
 {
-    protected $table;
-    protected $primaryKey = 'id';
-    protected $attributes = [];
-    protected $original = [];
-    protected $timestamps = true;
+    
+	protected $table;
+    protected $primaryKey 	= 'id';
+    protected $attributes 	= [];
+    protected $original 	= [];
+    protected $timestamps 	= true;
     protected $db;
     protected $hooks;
     
     // Relationship properties
-    protected $relations = [];
-    protected $with = [];
-    protected $loadedRelations = [];
-    protected static $eagerLoads = [];
+    protected $relations 			= [];
+    protected $with 				= [];
+    protected $loadedRelations 		= [];
+    protected static $eagerLoads 	= [];
     
     public function __construct($attributes = [])
     {

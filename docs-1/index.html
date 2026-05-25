@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter;background:#0b0f14;color:#e6edf3}
+
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1500;
+
+  display: grid;
+  grid-template-columns: 260px 1fr 220px;
+  align-items: center;
+
+  height: 60px;
+  padding: 0 20px;
+
+  background: rgba(11, 15, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2933;
+}
+
+body.light {
+  background: #ffffff;
+  color: #111;
+}
+
+body.light .header {
+  background: rgba(255,255,255,0.8);
+}
+
+body.light .sidebar,
+body.light .toc {
+  background: #fff;
+}
+
+/* LEFT */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+/* CENTER SEARCH */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+#search-trigger {
+  width: 60%;
+  max-width: 400px;
+
+  background: #161b22;
+  border: 1px solid #1f2933;
+  color: #9aa4af;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+#search-trigger:hover {
+  border-color: #2f81f7;
+}
+
+.kbd {
+  font-size: 11px;
+  background: #0b0f14;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* RIGHT */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.icon {
+  text-decoration: none;
+  color: #9aa4af;
+}
+
+
+
+/* GRID LAYOUT */
+.layout{
+  display:grid;
+  grid-template-columns:var(--sidebar-width,260px) 1fr 220px;
+  height:100vh;
+  margin-top: 0px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  background:#0b0f14;
+  border-right:1px solid #1f2933;
+  padding:10px;
+  transition:width .25s;
+  overflow:hidden;
+}
+
+.sidebar nav a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  color:#9aa4af;
+  text-decoration:none;
+  border-radius:6px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active{
+  background:#161b22;
+  color:#fff;
+}
+
+.sidebar.collapsed{width:70px}
+.sidebar.collapsed .label{display:none}
+.sidebar.collapsed nav a{justify-content:center}
+
+/* Collapse button */
+#collapse-btn{
+  width:auto;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+
+/* TOOLTIP */
+.sidebar.collapsed nav a{
+  position:relative;
+}
+.sidebar.collapsed nav a:hover::after{
+  content:attr(data-title);
+  position:absolute;
+  left:80px;
+  background:#161b22;
+  padding:6px 10px;
+  border-radius:4px;
+  white-space:nowrap;
+}
+
+/* MAIN */
+.main{
+  padding:21px 42px 42px 42px;
+  width:100%;
+}
+
+/* TOC */
+.toc{
+  border-left:1px solid #1f2933;
+  padding:20px;
+  overflow:auto;
+}
+.toc a{
+  display:block;
+  font-size:13px;
+  color:#9aa4af;
+  margin-bottom:6px;
+  text-decoration:none;
+}
+
+/* CODE */
+pre{
+  background:#161b22;
+  padding:16px;
+  border-radius:8px;
+  position:relative;
+  margin: 2rem 0;
+}
+.copy-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#2f81f7;
+  border:none;
+  color:#fff;
+  padding:4px 8px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+.menu-btn{
+  display:none;
+  position:fixed;
+  top:15px;
+  left:15px;
+  background:#2f81f7;
+  border:none;
+  color:#fff;
+  padding:10px;
+  border-radius:6px;
+  z-index:1000;
+}
+
+ul.doc-list{
+	padding: 21px;
+	margin: 0px;
+}
+
+@media(max-width:900px){
+	.header {
+		grid-template-columns: 1fr auto;
+	}
+
+	.header-center {
+		display: none;
+	}
+	.layout{
+		grid-template-columns:1fr;
+	}
+	.sidebar{
+		position:fixed;
+		left:0;
+		top:0;
+		height:100%;
+		transform:translateX(-100%);
+		z-index:1000;
+	}
+	.sidebar.show{transform:translateX(0)}
+	.toc{display:none}
+	.menu-btn{display:block}
+}
+
+/* SEARCH MODAL */
+#search-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:2000;
+}
+#search-box{
+  max-width:600px;
+  margin:21px auto;
+  background:#161b22;
+  padding:20px;
+  border-radius:10px;
+}
+#search-input{
+  width:100%;
+  padding:12px;
+  background:#0b0f14;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  outline:none;
+}
+.result{
+  padding:10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+.result.active{background:#2f81f7}
+
+.my-1{
+	margin: 1rem 0;
+}
+
+.my-2{
+	margin: 2rem 0;
+}
+
+.my-3{
+	margin: 3rem 0;
+}
+
+.my-4{
+	margin: 4rem 0;
+}
+
+.my-5{
+	margin: 5rem 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<!--
+	
+ -->
+<header class="header">
+
+	<div class="header-left">
+		<span class="logo">
+			<img src="images/logo.svg" style="height:35px;" />
+		</span>
+		
+	</div>
+
+	<div class="header-center">
+		<button id="search-trigger">
+			Search docs...
+			<span class="kbd">Ctrl K</span>
+		</button>
+	</div>
+	
+	<!--
+		<div class="header-right">
+			<a href="#" class="icon">⭐</a>
+			<button id="theme-toggle">🌙</button>
+		</div>
+	-->
+	
+</header>
+
+<button class="menu-btn">☰</button>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+	<nav>
+	  
+		<a href="#intro" data-title="Introduction">
+			<span>🏠</span>
+			<span class="label">Introduction</span>
+		</a>
+		
+		<a href="#usage" data-title="Usage">
+			<span>🚀</span>
+			<span class="label">Usage</span>
+		</a>
+		
+		<a href="#installation_and_setup" data-title="Installation & Setup">
+			<span>⚙️</span>
+			<span class="label">Installation & Setup</span>
+		</a>		
+		
+		<a href="#configuration" data-title="configuration">
+			<span>⚙️</span>
+			<span class="label">Configuration</span>
+		</a>
+		
+		<a href="#routing" data-title="Routing">
+			<span>⚙️</span>
+			<span class="label">Routing</span>
+		</a>
+		
+		<a href="#controllers" data-title="Controllers">
+			<span>⚙️</span>
+			<span class="label">Controllers</span>
+		</a>
+		
+		<a href="#models_and_database" data-title="Models & Database">
+			<span>⚙️</span>
+			<span class="label">Models & Database</span>
+		</a>
+		
+		<a href="#views_and_smarty_templates" data-title="Views & Smarty Templates">
+			<span>⚙️</span>
+			<span class="label">Views & Smarty Templates</span>
+		</a>
+		
+		<a href="#hooks_system" data-title="Hooks System">
+			<span>⚙️</span>
+			<span class="label">Hooks System</span>
+		</a>
+		
+		<a href="#middleware" data-title="Middleware">
+			<span>⚙️</span>
+			<span class="label">Middleware</span>
+		</a>
+		
+		<a href="#session_and_csrf_protection" data-title="Session & CSRF Protection">
+			<span>⚙️</span>
+			<span class="label">Session & CSRF Protection</span>
+		</a>
+		
+		<a href="#api_development" data-title="API Development">
+			<span>⚙️</span>
+			<span class="label">API Development</span>
+		</a>
+		
+		<a href="#error_handling_and_ebugging" data-title="Error Handling & Debugging">
+			<span>⚙️</span>
+			<span class="label">Error Handling & Debugging</span>
+		</a>
+		
+		<a href="#best_practices" data-title="Best Practices">
+			<span>⚙️</span>
+			<span class="label">Best Practices</span>
+		</a>
+		
+		
+	</nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+	<button id="collapse-btn">☰</button>
+	<div id="content">Loading...</div>
+</main>
+
+<!-- TOC -->
+<aside class="toc" id="toc"></aside>
+
+</div>
+
+<!-- SEARCH -->
+<div id="search-modal">
+	<div id="search-box">
+		<input id="search-input" placeholder="Search docs..."/>
+		<div id="search-results"></div>
+	</div>
+</div>
+
+<script>
+
+document.getElementById("search-trigger").onclick = () => {
+  document.getElementById("search-modal").style.display = "block";
+  document.getElementById("search-input").focus();
+};
+
+const themeBtn = document.getElementById( "theme-toggle" );
+
+if( document.body.contains( themeBtn ) ){
+	themeBtn.onclick = () => {
+		document.body.classList.toggle( "light" );	
+		localStorage.setItem(
+			"theme",
+			document.body.classList.contains("light") ? "light" : "dark"
+		);
+	};
+}
+
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+}
+
+// ROUTES
+const routes={
+	intro:"pages/intro.html",
+	setup:"pages/setup.html",
+	installation_and_setup:"pages/installation-and-setup.html",
+	routing:"pages/routing.html",
+	usage:"pages/usage.html"
+};
+
+let searchIndex=[],filtered=[],selectedIndex=0;
+
+// LOAD PAGE
+async function loadPage(page){
+  const res=await fetch(routes[page]||routes.intro);
+  const html=await res.text();
+  content.innerHTML=html;
+  setupCopy(); generateTOC();
+}
+
+// ROUTER
+function router(){
+  const page=location.hash.replace("#","")||"intro";
+  loadPage(page);
+  document.querySelectorAll(".sidebar a").forEach(a=>{
+    a.classList.toggle("active",a.getAttribute("href")==="#"+page);
+  });
+}
+
+// COPY
+function setupCopy(){
+  document.querySelectorAll(".copy-btn").forEach(btn=>{
+    btn.onclick=()=>{
+      navigator.clipboard.writeText(btn.nextElementSibling.innerText);
+      btn.innerText="Copied!";
+      setTimeout(()=>btn.innerText="Copy",1500);
+    };
+  });
+}
+
+// TOC
+function generateTOC(){
+  toc.innerHTML="<h4>On this page</h4>";
+  document.querySelectorAll("#content h1,#content h2").forEach(h=>{
+    const id=h.innerText.replace(/\s+/g,"-").toLowerCase();
+    h.id=id;
+    const a=document.createElement("a");
+    a.href="#"+id;
+    a.innerText=h.innerText;
+    toc.appendChild(a);
+  });
+}
+
+// COLLAPSE SIDEBAR
+const sidebar=document.getElementById("sidebar");
+const btn=document.getElementById("collapse-btn");
+
+if(localStorage.getItem("sidebar")==="collapsed"){
+  sidebar.classList.add("collapsed");
+  document.documentElement.style.setProperty("--sidebar-width","70px");
+}
+
+btn.onclick=()=>{
+  sidebar.classList.toggle("collapsed");
+  const c=sidebar.classList.contains("collapsed");
+  document.documentElement.style.setProperty("--sidebar-width",c?"70px":"260px");
+  localStorage.setItem("sidebar",c?"collapsed":"expanded");
+};
+
+// MOBILE
+document.querySelector(".menu-btn").onclick=()=>{
+  sidebar.classList.toggle("show");
+};
+
+// AUTO INDEX
+async function buildIndex(){
+  searchIndex=[];
+  for(const [page,path] of Object.entries(routes)){
+    const res=await fetch(path);
+    const html=await res.text();
+    const doc=new DOMParser().parseFromString(html,"text/html");
+
+    const text=doc.body.innerText.toLowerCase();
+    const headings=doc.querySelectorAll("h1,h2,h3");
+
+    searchIndex.push({title:page,content:text,page});
+
+    headings.forEach(h=>{
+      const id=h.innerText.replace(/\s+/g,"-").toLowerCase();
+      searchIndex.push({
+        title:h.innerText,
+        content:h.parentElement.innerText.toLowerCase(),
+        page,
+        anchor:id
+      });
+    });
+  }
+}
+
+// SEARCH
+const modal=document.getElementById("search-modal");
+const input=document.getElementById("search-input");
+const results=document.getElementById("search-results");
+
+document.addEventListener("keydown",e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==="k"){
+    e.preventDefault();
+    modal.style.display="block";
+    input.focus();
+  }
+  if(e.key==="Escape") modal.style.display="none";
+});
+
+input.addEventListener("input",()=>{
+  const q=input.value.toLowerCase();
+  filtered=searchIndex.filter(i=>i.title.toLowerCase().includes(q)||i.content.includes(q));
+  selectedIndex=0; renderResults();
+});
+
+function renderResults(){
+  results.innerHTML="";
+  filtered.forEach((item,i)=>{
+    const div=document.createElement("div");
+    div.className="result"+(i===selectedIndex?" active":"");
+    div.innerHTML=`<strong>${item.title}</strong>
+    <div style="font-size:12px;opacity:.6">${item.page}</div>`;
+    div.onclick=()=>navigate(item);
+    results.appendChild(div);
+  });
+}
+
+function navigate(item){
+  location.hash=item.page;
+  setTimeout(()=>{
+    if(item.anchor){
+      document.getElementById(item.anchor)?.scrollIntoView();
+    }
+  },100);
+  modal.style.display="none";
+}
+
+document.addEventListener("keydown",e=>{
+  if(modal.style.display==="block"){
+    if(e.key==="ArrowDown"){selectedIndex=Math.min(selectedIndex+1,filtered.length-1);renderResults();}
+    if(e.key==="ArrowUp"){selectedIndex=Math.max(selectedIndex-1,0);renderResults();}
+    if(e.key==="Enter"){filtered[selectedIndex]&&navigate(filtered[selectedIndex]);}
+  }
+});
+
+// INIT
+window.addEventListener("hashchange",router);
+
+(async()=>{
+  await buildIndex();
+  router();
+})();
+
+
+
+</script>
+
+</body>
+</html>
