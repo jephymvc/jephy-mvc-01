@@ -1,14 +1,14 @@
 # Site settings
 title: "JephyPHP Framework Documentation"
 description: "Complete documentation for the JephyPHP Framework"
-url: "https://yourusername.github.io"
+url: "https://jephymvc.github.io"
 baseurl: ""  # Change for project pages  
 theme: null
 
 # Framework info
 framework_name: "PHP Framework"
 framework_version: "2.0.0"
-repo_url: "https://github.com/yourusername/php-framework"
+repo_url: "https://jephymvc.github.io/jephy-mvc-01/"
 
 # Documentation settings
 docs:
