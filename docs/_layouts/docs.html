@@ -162,7 +162,7 @@ const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
 [...asideHeading].forEach( ( it ) => {
 	it.style.cursor = "pointer";
 	it.addEventListener( "click", ( evt ) => {
-		location.href = pageData.getAttribute( "data-url" ) . "docs/" + it.getAttribute( "data-target" );
+		location.href = pageData.getAttribute( "data-url" ) + "docs/" + it.getAttribute( "data-target" );
 	} );
 } );
 

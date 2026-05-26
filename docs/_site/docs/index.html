@@ -520,14 +520,14 @@
 		<a href="">Docs</a>
 	</div>
 	<span class="breadcrumb-divider">
-		<img src="/assets/images/icons/arrow-right.svg" />
+		<img src="https://github.com/yourusername/php-frameworkassets/images/icons/arrow-right.svg" />
 	</span>
 	
 	<div>
 		<a href="">Getting Started</a>
 	</div>
 	<span class="breadcrumb-divider">
-		<img src="/assets/images/icons/arrow-right.svg" />
+		<img src="https://github.com/yourusername/php-frameworkassets/images/icons/arrow-right.svg" />
 	</span>
 
 	<div>Installation</div>															
@@ -908,7 +908,7 @@ const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
 [...asideHeading].forEach( ( it ) => {
 	it.style.cursor = "pointer";
 	it.addEventListener( "click", ( evt ) => {
-		location.href = pageData.getAttribute( "data-url" ) . "docs/" + it.getAttribute( "data-target" );
+		location.href = pageData.getAttribute( "data-url" ) + "docs/" + it.getAttribute( "data-target" );
 	} );
 } );
 

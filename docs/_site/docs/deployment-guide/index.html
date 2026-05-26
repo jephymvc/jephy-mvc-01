@@ -517,10 +517,10 @@
 						<div>
 							<div class="center-breadcrumbs mt-1 mb-4">
 	<div>
-		<a href="/docs/overview">Docs</a>
+		<a href="https://github.com/yourusername/php-frameworkdocs/overview">Docs</a>
 	</div>
 	<span class="breadcrumb-divider">
-		<img src="/assets/images/icons/arrow-right.svg" />
+		<img src="https://github.com/yourusername/php-frameworkassets/images/icons/arrow-right.svg" />
 	</span>
 
 	<div>Deployment Guide</div>															
@@ -1544,7 +1544,7 @@ const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
 [...asideHeading].forEach( ( it ) => {
 	it.style.cursor = "pointer";
 	it.addEventListener( "click", ( evt ) => {
-		location.href = pageData.getAttribute( "data-url" ) . "docs/" + it.getAttribute( "data-target" );
+		location.href = pageData.getAttribute( "data-url" ) + "docs/" + it.getAttribute( "data-target" );
 	} );
 } );
 
