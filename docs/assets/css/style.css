@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6{
 	display: block;
 	width: 100%;
 	min-height: 210px;
-	background-image: url( ../images/banners/slide.jpg );
+	background-image: url( {{ site.repo_url }}assets/images/banners/slide.jpg );
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -198,7 +198,7 @@ h1, h2, h3, h4, h5, h6{
 	display: block;
 	width: 100%;
 	min-height: 420px;
-	background-image: url( ../images/banners/slide.jpg );
+	background-image: url( {{ site.repo_url }}assets/images/banners/slide.jpg );
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -546,20 +546,9 @@ a.more-link{
 	text-decoration: none !important;
 }
 
-.sherilynn-asuoha{
-	background-image: url( /assets/images/team/sherilynn-asuoha.png );
-	background-position: center;
-	background-size: cover;
-	height: 350px;
-}
 
 
-.pavielle-randolph{
-	background-image: url( /assets/images/team/pavielle-randolph.png );
-	background-position: center;
-	background-size: cover;
-	height: 350px;
-}
+
 
 
 .team-tags{}

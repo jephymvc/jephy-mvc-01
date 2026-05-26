@@ -1,1 +1,1 @@
-Sitemap: http://localhost:6660/sitemap.xml
+Sitemap: http://localhost:6660/jephy-mvc-01/sitemap.xml
