@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">	
 <title>Documentation</title>
-<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+<link rel="shortcut icon" type="image/png" href="https://github.com/yourusername/php-frameworkassets/images/favicon.png">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-<link href="/assets/css/documentation.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://github.com/yourusername/php-frameworkassets/css/bootstrap.min.css">
+<link href="https://github.com/yourusername/php-frameworkassets/css/documentation.css" rel="stylesheet" />
 
 <style>
 </style>
@@ -25,33 +25,33 @@
 						<ul>
 							<li class="header-logo">
 								<a href="/">
-									<img src="/assets/images/logo.svg" />
+									<img src="https://github.com/yourusername/php-frameworkassets/images/logo.svg" />
 								</a>
 							</li>
 							
 							
 							<li class="header-menu">
-								<a href="/docs/getting-started">
-									<img src="/assets/images/icons/book-open.svg" />
+								<a href="https://github.com/yourusername/php-frameworkdocs/getting-started">
+									<img src="https://github.com/yourusername/php-frameworkassets/images/icons/book-open.svg" />
 									Docs
 								</a>
 							</li>
 							
 							<!---->
 							<li class="header-menu">
-								<a href="/home/">
-									<img src="/assets/images/icons/code.svg" />
+								<a href="https://github.com/yourusername/php-framework">
+									<img src="https://github.com/yourusername/php-frameworkassets/images/icons/code.svg" />
 									API
 								</a>
 							</li>
 							
 							<li class="header-menu">
 								<a href="/community">
-									<img src="/assets/images/icons/users-1.svg" />
+									<img src="https://github.com/yourusername/php-frameworkassets/images/icons/users-1.svg" />
 									Community
 								</a>
 							</li>
-							<li class="header-menu"><a href="/blog">Github</a></li>
+							<li class="header-menu"><a href="">Github</a></li>
 							
 						</ul>				
 					</div>
@@ -2721,8 +2721,10 @@ class SecurityAudit
 	</div>
 </main>
 
+<span id="page-data" data-url="https://github.com/yourusername/php-framework"></span>
 
 <script>
+const pageData = document.querySelector( "#page-data" );
 const header = document.querySelectorAll( "header" )[0];
 header.classList.remove( "fixed-header" );
 window.addEventListener( "scroll", () => {
@@ -2752,7 +2754,7 @@ const asideHeading =  document.querySelectorAll( ".aside-heading > span" );
 [...asideHeading].forEach( ( it ) => {
 	it.style.cursor = "pointer";
 	it.addEventListener( "click", ( evt ) => {
-		location.href = "/docs/" + it.getAttribute( "data-target" );
+		location.href = pageData.getAttribute( "data-url" ) . "docs/" + it.getAttribute( "data-target" );
 	} );
 } );
 
